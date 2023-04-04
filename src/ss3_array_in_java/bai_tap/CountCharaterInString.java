@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class CountCharaterInString {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Nhập ký tự để kiểm tra");
-        String input = sc.nextLine();
-        String str = "abcdefgh";
-        char a = 'a';
+        String str = "VIETNAMNUMBERONE";
+        char a = 'E';
         int count = 0;
         for (int i = 0; i < str.length(); i++) {
+            if (a == str.charAt(i)) {
+                count++;
+            }
         }
+        System.out.println("Số lần xuất hiện của ký tự trong chuỗi là: " + count);
     }
 }
