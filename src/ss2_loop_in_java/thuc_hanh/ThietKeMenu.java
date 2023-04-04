@@ -2,7 +2,7 @@ package ss2_loop_in_java.thuc_hanh;
 
 import java.util.Scanner;
 
-public class DesignMenu {
+public class ThietKeMenu {
     public static void main(String[] args) {
         int choice = -1;
         Scanner input = new Scanner(System.in);
