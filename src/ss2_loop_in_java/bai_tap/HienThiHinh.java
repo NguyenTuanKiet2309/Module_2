@@ -34,11 +34,14 @@ public class HienThiHinh {
                     }
                     break;
                 case 3:
-                    for (int i = 6; i > 1; i--) {
-                        for (int j = 1; j < i; j++) {
-                            System.out.print("*");
+                    for (int i = 0; i < 7; i++) {
+                        for (int j = 0; j < 7 * 2; j++) {
+                            if (j > 7 - i && j < 7 + i) {
+                                System.out.print("*");
+                            } else
+                                System.out.print(" ");
                         }
-                        System.out.println();
+                        System.out.println(" ");
                     }
                     break;
                 case 4:
