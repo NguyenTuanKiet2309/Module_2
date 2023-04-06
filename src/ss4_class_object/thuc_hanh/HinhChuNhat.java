@@ -1,4 +1,4 @@
-package ss4_class_object.thuc_hanh;
+package ss4_class_object.thuc_hanh.StaticMethod;
 
 import java.awt.*;
 import java.util.Scanner;

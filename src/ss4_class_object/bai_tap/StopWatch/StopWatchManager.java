@@ -13,6 +13,6 @@ public class StopWatchManager {
         String b = sc.nextLine();
         System.out.println("Sao không nói gì hết vậy trời");
         time.stop();
-        System.out.println(time.getElapsedTime());
+        System.out.println(time.getElapsedTime() + " miliseconds");
     }
 }
