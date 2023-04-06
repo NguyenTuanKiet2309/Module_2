@@ -1,4 +1,5 @@
 package ss3_array_in_java.bai_tap_lam_them;
+
 import java.util.Scanner;
 
 public class KiemTraSoNguyenTo {
@@ -10,11 +11,11 @@ public class KiemTraSoNguyenTo {
     }
 
     public static boolean numbers(int n) {
-        if (n < 2) {
+        if (n > 0 && n < 2) {
             return false;
         }
         for (int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0){
+            if (n % i == 0) {
                 return false;
             }
         }

@@ -11,7 +11,7 @@ public class KiemTraChanLe {
     }
 
     public static boolean isOdd(int num) {
-        if (num % 1 == 0) {
+        if (num % 2 == 0) {
             return true;
         } else {
             return false;
