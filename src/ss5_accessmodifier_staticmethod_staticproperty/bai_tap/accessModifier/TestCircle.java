@@ -1,4 +1,4 @@
-package ss5_accessmodifier_staticmethod_staticproperty.bai_tap.AccessModifier;
+package ss5_accessmodifier_staticmethod_staticproperty.bai_tap.accessModifier;
 
 import java.util.Scanner;
 

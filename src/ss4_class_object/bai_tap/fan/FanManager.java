@@ -1,4 +1,4 @@
-package ss4_class_object.bai_tap.Fan;
+package ss4_class_object.bai_tap.fan;
 
 public class FanManager {
     public static void main(String[] args) {

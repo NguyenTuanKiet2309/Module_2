@@ -1,4 +1,4 @@
-package ss5_accessmodifier_staticmethod_staticproperty.bai_tap.AccessModifier;
+package ss5_accessmodifier_staticmethod_staticproperty.bai_tap.accessModifier;
 
 public class Circle {
     private double radius = 1.0;
