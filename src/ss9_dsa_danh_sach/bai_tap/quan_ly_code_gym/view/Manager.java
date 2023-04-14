@@ -1,10 +1,12 @@
 package ss9_dsa_danh_sach.bai_tap.quan_ly_code_gym.view;
 
+import ss9_dsa_danh_sach.bai_tap.quan_ly_code_gym.controller.StudentController;
+
 import java.util.Scanner;
 
 public class Manager {
     public static void main(String[] args) {
-
+        StudentController studentController = new StudentController();
         int choice = -1;
         Scanner sc = new Scanner(System.in);
         while (choice != 0) {
@@ -18,9 +20,9 @@ public class Manager {
             choice = sc.nextInt();
             switch (choice) {
                 case 1:
-
                 case 2:
                 case 3:
+                    studentController.displayStudent();
                 case 4:
                     System.exit(0);
                 default:
