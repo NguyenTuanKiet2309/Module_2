@@ -32,8 +32,6 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "classRoom='" + classRoom + '\'' +
-                ", score='" + score + '\'' + super.toString() + '}';
+        return "Student{" + super.toString() + ", classRoom='" + classRoom + '\'' + ", score='" + score + '\'' + '}';
     }
 }
