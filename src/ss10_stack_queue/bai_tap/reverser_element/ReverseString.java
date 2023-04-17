@@ -3,7 +3,7 @@ package ss10_stack_queue.bai_tap.reverser_element;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class reverseString {
+public class ReverseString {
     public static void main(String[] args) {
         Stack<String> wStack = new Stack();
         Scanner sc = new Scanner(System.in);
