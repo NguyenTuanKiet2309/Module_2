@@ -3,7 +3,7 @@ package ss10_stack_queue.bai_tap.change_decimal_to_binary;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class changeDecimalToBinary {
+public class ChangeDecimalToBinary {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập vào số thập phân");
