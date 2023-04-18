@@ -12,7 +12,7 @@ public interface IProductRepository {
 
     boolean checkId(int id);
 
-    void editProductById(int id, int idEdit, String nameEdit, int priceEdit);
+    void editProductById(int id, int idEdit, String nameEdit, double priceEdit);
 
     boolean deleteProductById(int id);
 

@@ -27,7 +27,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public void editProductById(int id, int idEdit, String nameEdit, int priceEdit) {
+    public void editProductById(int id, int idEdit, String nameEdit, double priceEdit) {
         for (Product p : productList) {
             if (id == p.getId()) {
                 p.setId(idEdit);

@@ -19,7 +19,7 @@ public class ProductService implements IProductService {
         System.out.println("Mời bạn nhập tên cho sản phẩm : ");
         String name = sc.nextLine();
         System.out.println("Mời bạn nhập giá cho sản phẩm : ");
-        int price = Integer.parseInt(sc.nextLine());
+        double price = Integer.parseInt(sc.nextLine());
         Product product = new Product(id, name, price);
         productList.add(product);
         displayProduct();
@@ -36,7 +36,7 @@ public class ProductService implements IProductService {
             System.out.println("Mời bạn nhập lại tên sản phẩm :");
             String nameEdit = sc.nextLine();
             System.out.println("Mời bạn nhập lại giá sản phẩm");
-            int priceEdit = Integer.parseInt(sc.nextLine());
+            double priceEdit = Integer.parseInt(sc.nextLine());
             productRepository.editProductById(idProduct, idEdit, nameEdit, priceEdit);
         } else {
             System.out.println("khôg tìm thấy id");
