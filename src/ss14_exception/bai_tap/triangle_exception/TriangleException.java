@@ -1,4 +1,4 @@
-package ss14_exception;
+package ss14_exception.bai_tap.triangle_exception;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -12,7 +12,7 @@ public class TriangleException {
             double sideB = sc.nextInt();
             double sideC = sc.nextInt();
             checkTriangleException(sideA, sideB, sideC);
-        } catch (IllegalTriangleException | InputMismatchException e) {
+        } catch (IllegalTriangleException e) {
             e.printStackTrace();
         } finally {
             System.out.println("Finally!");
