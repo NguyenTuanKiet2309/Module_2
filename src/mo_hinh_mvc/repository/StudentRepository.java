@@ -9,44 +9,62 @@ import java.util.Scanner;
 
 public class StudentRepository implements IStudentRepository {
     Scanner sc = new Scanner(System.in);
-    static List<Student> list = new ArrayList<>();
-
-    static {
-        list.add(new Student("01", "NGuyễn TUấn Kiệt", "tuankiett@gmail.com"));
-        list.add(new Student("02", "NGuyễn Đức Trung", "ductrung@gmail.com"));
-        list.add(new Student("03", "Phạm Công Nam", "congnam@gmail.com"));
-    }
-
+    private static List<Student> list = new ArrayList<>();
+    private static final String STUDENT_PATH = "src/mo_hinh_mvc/data/data.txt";
 
     @Override
     public List<Student> getStudenlist() {
-        return WriteAndReadFile.readFile();
+        list = WriteAndReadFile.readFile(STUDENT_PATH);
+        return list;
     }
 
     @Override
     public void addStudent(Student student) {
-        WriteAndReadFile.writeFile(student);
+        list.add(student);
+        WriteAndReadFile.writeFile(list, STUDENT_PATH);
     }
 
     @Override
-    public boolean editStudent(String id) {
-        for (int i = 0; i < list.size(); i++) {
-            if (id.equals(list.get(i).getId())) {
-                int x = i;
-                return true;
-            }
+    public void editStudent(int index, int input) {
+        if (input == 1) {
+            System.out.println("Nhập vào mã cần sửa");
+            String newId = sc.nextLine();
+            list.get(index).setId(newId);
+        } else if (input == 2) {
+            System.out.println("Nhập vào tên cần sửa");
+            String newName = sc.nextLine();
+            list.get(index).setName(newName);
+        } else if (input == 3) {
+            System.out.println("Nhập vào email cần sửa");
+            String newEmail = sc.nextLine();
+            list.get(index).setEmail(newEmail);
         }
-        return false;
+        WriteAndReadFile.writeFile(list, STUDENT_PATH);
     }
 
     @Override
     public boolean deleteStudent(String id) {
-        for (int i = 0; i < list.size(); i++) {
-            if (id.equals(list.get(i).getId())) {
+        int sizeList = list.size();
+        for (int i = 0; i < sizeList; i++) {
+            if (list.get(i).getId().equals(id)) {
                 list.remove(i);
+                WriteAndReadFile.writeFile(list, STUDENT_PATH);
                 return true;
             }
         }
         return false;
     }
+
+    @Override
+    public int checkId(String id) {
+        int result = -1;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId().equals(id)) {
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
 }
+

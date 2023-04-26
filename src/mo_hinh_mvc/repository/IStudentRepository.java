@@ -9,7 +9,9 @@ public interface IStudentRepository {
 
     void addStudent(Student student);
 
-   boolean editStudent(String id);
+    void editStudent(int id, int input);
 
     boolean deleteStudent(String id);
+
+    int checkId(String id);
 }

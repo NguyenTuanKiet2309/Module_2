@@ -3,8 +3,7 @@ package case_study.model;
 public abstract class Person {
     //Họ tên, Ngày sinh, Giới tính, Số CMND,
     // Số Điện Thoại, Email,
-    //, Họ tên, Ngày sinh, Giới tính, Số CMND, Số Điện Thoại, Email,
-    //
+    // Họ tên, Ngày sinh, Giới tính, Số CMND, Số Điện Thoại, Email,
     private String namePerson;
     private String dayOfBirth;
     private boolean gender;

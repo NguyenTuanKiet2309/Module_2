@@ -8,57 +8,41 @@ import java.util.List;
 
 public class WriteAndReadFile {
 
-    public static void writeFile(Student student) {
-        String path = "src/mo_hinh_mvc/data/data.txt";
+    public static void writeFile(List<Student> student, String path) {
         File file = new File(path);
-        FileWriter fileWriter = null;
-        BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file,true);
-            bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(student.writeToFile());
-            bufferedWriter.newLine();
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (Student s : student) {
+                bufferedWriter.write(s.writeToFile());
+                bufferedWriter.newLine();
+            }
             bufferedWriter.flush();
+            bufferedWriter.close();
+            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                fileWriter.close();
-                bufferedWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 
-    public static List<Student> readFile() {
-        String path = "src/mo_hinh_mvc/data/data.txt";
+    public static List<Student> readFile(String path) {
         List<Student> list = new ArrayList<>();
         File file = new File(path);
-        FileReader fileReader = null;
-        BufferedReader bufferedReader = null;
         try {
-            fileReader = new FileReader(file);
-            bufferedReader = new BufferedReader(fileReader);
-            String temp;
-            String[] tempArr;
-            Student student;
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String temp = null;
             while ((temp = bufferedReader.readLine()) != null) {
-                tempArr = temp.split(",");
-                student = new Student(tempArr[0], tempArr[1], tempArr[2]);
+                String[] tempArr = temp.split(",");
+                Student student = new Student(tempArr[0], tempArr[1], tempArr[2]);
                 list.add(student);
             }
+            fileReader.close();
+            bufferedReader.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                fileReader.close();
-                bufferedReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
         return list;
     }

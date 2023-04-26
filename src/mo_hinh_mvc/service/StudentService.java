@@ -19,25 +19,26 @@ public class StudentService implements IStudentService {
         String email = sc.nextLine();
         Student student = new Student(id, name, email);
         studentRepository.addStudent(student);
+        System.out.println("Thêm mới thành công");
     }
 
     @Override
     public void editStudent() {
         System.out.println("Nhập id muốn sửa");
         String id = sc.nextLine();
-        boolean editStudent = studentRepository.editStudent(id);
-        if (editStudent) {
-            System.out.println("Mời bạn nhập id");
-            String idEdit = sc.nextLine();
-            System.out.println("Mời bạn nhập tên");
-            String nameEdit = sc.nextLine();
-            System.out.println("Mời bạn nhập email");
-            String emailEdit = sc.nextLine();
-            Student student = new Student(idEdit, nameEdit, emailEdit);
-            studentRepository.addStudent(student);
+        int index = studentRepository.checkId(id);
+        if (index == -1) {
+            System.out.println("Không có mã id này");
         } else {
-            System.out.println("Không tìm thấy mã");
+            System.out.println("Chọn mục cần sửa\n" +
+                    "1. Id \n" +
+                    "2. Tên\n" +
+                    "3. Email");
+            int input = sc.nextInt();
+            studentRepository.editStudent(index, input);
         }
+
+
     }
 
     @Override
@@ -49,13 +50,13 @@ public class StudentService implements IStudentService {
 
     @Override
     public void deleteStudent() {
-        System.out.println("Nhập id muốn sửa");
+        System.out.println("Nhập id muốn xoá: ");
         String id = sc.nextLine();
-        boolean deleleStudent = studentRepository.deleteStudent(id);
-        if (deleleStudent) {
+        boolean flag = studentRepository.deleteStudent(id);
+        if (flag){
             System.out.println("Đã xoá thành công");
         } else {
-            System.out.println("Khôgn tìm thấy id");
+            System.out.println("Không tìm thấy id");
         }
     }
 }
