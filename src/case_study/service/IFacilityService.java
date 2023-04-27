@@ -1,4 +1,4 @@
 package case_study.service;
 
-public interface IFacilityService extends IFuramaService{
+public interface IFacilityService extends ICustomerService {
 }

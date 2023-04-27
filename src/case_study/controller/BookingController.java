@@ -11,7 +11,7 @@ public class BookingController {
 
     public void displayBooking() {
         boolean flagBooking = true;
-        System.out.println("--- QUẢN LÝ BOOKING ---");
+        System.out.println("--- MANAGEMENT BOOKING ---");
         do {
             System.out.println("1. Add new booking \n" +
                     "2. Display list booking \n" +
@@ -35,6 +35,9 @@ public class BookingController {
                 case "6":
                     furamaController.displayMenu();
                     break;
+                default:
+                    System.out.println("Không có lựa chọn");
+                    flagBooking = true;
             }
         } while (flagBooking);
     }

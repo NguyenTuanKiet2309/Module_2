@@ -13,7 +13,7 @@ public class FuramaController {
 
     public void displayMenu() {
 
-        System.out.println("--- QUẢN LÝ RESORT FURAMA ---");
+        System.out.println("--- MANAGEMENT RESORT FURAMA ---");
         boolean flag = true;
         do {
             System.out.println("1. Employee Management \n" +
@@ -44,7 +44,7 @@ public class FuramaController {
                     System.out.println("Nice To Meet You - Have A Nice Day !!!");
                     System.exit(0);
                 default:
-                    System.out.println("Không có lựa chọn");
+                    System.out.println("No Choice - Enter Choice Again! ");
                     flag = true;
             }
         } while (flag);

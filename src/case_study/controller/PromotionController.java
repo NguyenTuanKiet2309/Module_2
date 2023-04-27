@@ -8,7 +8,7 @@ public class PromotionController {
     Scanner sc = new Scanner(System.in);
 
     public void displayPromotion() {
-        System.out.println("--- QUẢN LÝ PROMOTION ---");
+        System.out.println("--- MANAGEMENT PROMOTION ---");
         boolean flagPromotion = true;
         do {
             System.out.println("1. Display list customers use service \n" +

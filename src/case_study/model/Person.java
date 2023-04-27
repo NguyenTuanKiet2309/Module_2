@@ -1,26 +1,39 @@
 package case_study.model;
 
 public abstract class Person {
-    //Họ tên, Ngày sinh, Giới tính, Số CMND,
-    // Số Điện Thoại, Email,
-    // Họ tên, Ngày sinh, Giới tính, Số CMND, Số Điện Thoại, Email,
     private String namePerson;
     private String dayOfBirth;
-    private boolean gender;
-    private int identityCard;
-    private int phoneNumber;
+    private String gender;
+    private String identityCard;
+    private String phoneNumber;
     private String email;
 
     public Person() {
     }
 
-    public Person(String namePerson, String dayOfBirth, boolean gender, int identityCard, int phoneNumber, String email) {
+    public Person(String namePerson, String dayOfBirth, String gender, String identityCard, String phoneNumber, String email) {
         this.namePerson = namePerson;
         this.dayOfBirth = dayOfBirth;
         this.gender = gender;
         this.identityCard = identityCard;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    public String getIdentityCard() {
+        return identityCard;
+    }
+
+    public void setIdentityCard(String identityCard) {
+        this.identityCard = identityCard;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getNamePerson() {
@@ -39,28 +52,12 @@ public abstract class Person {
         this.dayOfBirth = dayOfBirth;
     }
 
-    public boolean isGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public int getIdentityCard() {
-        return identityCard;
-    }
-
-    public void setIdentityCard(int identityCard) {
-        this.identityCard = identityCard;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -73,13 +70,11 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "namePerson='" + namePerson + '\'' +
+        return ", name='" + namePerson + '\'' +
                 ", dayOfBirth='" + dayOfBirth + '\'' +
                 ", gender=" + gender +
                 ", identityCard=" + identityCard +
                 ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                '}';
+                ", email='" + email;
     }
 }

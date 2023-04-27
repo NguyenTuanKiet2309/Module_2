@@ -10,14 +10,22 @@ public class Employee extends Person {
 
     }
 
-    public Employee(String idEmployee, String namePerson, String dayOfBirth, boolean gender, int identityCard, int phoneNumber, String email,
-                    String education, String location, double salary) {
+    public Employee(String idEmployee, String education, String location, double salary) {
+        this.idEmployee = idEmployee;
+        this.education = education;
+        this.location = location;
+        this.salary = salary;
+    }
+
+    public Employee(String idEmployee, String namePerson, String dayOfBirth, String gender, String identityCard, String phoneNumber,
+                    String email, String education, String location, double salary) {
         super(namePerson, dayOfBirth, gender, identityCard, phoneNumber, email);
         this.idEmployee = idEmployee;
         this.education = education;
         this.location = location;
         this.salary = salary;
     }
+
 
     public String getIdEmployee() {
         return idEmployee;
@@ -53,16 +61,16 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "Employee{ id employee=" + idEmployee
+        return "Employee{id= " + idEmployee
                 + super.toString() +
-                "education='" + education + '\'' +
+                ", education='" + education + '\'' +
                 ", location='" + location + '\'' +
                 ", salary=" + salary +
                 '}';
     }
 
     public String writeToFileEmployee() {
-        return  this.idEmployee + "," + super.getNamePerson() + "," + super.getDayOfBirth() + "," + super.isGender()
+        return  this.idEmployee + "," + super.getNamePerson() + "," + super.getDayOfBirth() + "," + super.getGender()
                 + "," + super.getIdentityCard() + "," + super.getPhoneNumber() + "," + super.getEmail()
                 + "," + this.education + "," + this.location + "," + this.salary;
     }

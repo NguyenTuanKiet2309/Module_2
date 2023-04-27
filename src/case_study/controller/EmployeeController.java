@@ -12,7 +12,7 @@ public class EmployeeController {
 
     public void displayEmployee() {
         boolean flagEmployee = true;
-        System.out.println("--- QUẢN LÝ EMPLOYEE ---");
+        System.out.println("--- MANAGEMENT EMPLOYEE ---");
         do {
             System.out.println("1. Display list employees \n" +
                     "2. Add new employee \n" +
@@ -35,7 +35,7 @@ public class EmployeeController {
                     break;
                 default:
                     System.out.println("Không có lựa chọn");
-                    flagEmployee=true;
+                    flagEmployee = true;
 
             }
         } while (flagEmployee);

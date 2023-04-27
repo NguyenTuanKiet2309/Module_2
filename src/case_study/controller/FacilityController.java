@@ -11,7 +11,7 @@ public class FacilityController {
 
     public void displayFacility() {
         boolean flagFacility = true;
-        System.out.println("--- QUẢN LÝ FACILITY ---");
+        System.out.println("--- MANAGEMENT FACILITY ---");
         do {
             System.out.println("1. Display list facility \n" +
                     "2. Add new facility \n" +
@@ -29,6 +29,9 @@ public class FacilityController {
                 case "4":
                     furamaController.displayMenu();
                     break;
+                default:
+                    System.out.println("Không có lựa chọn");
+                    flagFacility = true;
             }
         } while (flagFacility);
     }
