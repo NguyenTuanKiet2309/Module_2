@@ -11,10 +11,10 @@ public class PromotionController {
         System.out.println("--- MANAGEMENT PROMOTION ---");
         boolean flagPromotion = true;
         do {
-            System.out.println("1. Display list customers use service \n" +
+            System.out.print("1. Display list customers use service \n" +
                     "2. Display list customers get voucher \n" +
                     "3. Return main menu \n" +
-                    "Chọn 1 chức năng : ");
+                    "Enter your choice : ");
             String choice = sc.nextLine();
             switch (choice) {
                 case "1":
@@ -24,6 +24,9 @@ public class PromotionController {
                 case "3":
                     furamaController.displayMenu();
                     break;
+                default:
+                    System.out.println("No Choice - Enter Choice Again! ");
+                    flagPromotion = true;
             }
         } while (flagPromotion);
     }

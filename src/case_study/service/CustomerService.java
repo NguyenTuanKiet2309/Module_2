@@ -20,93 +20,95 @@ public class CustomerService implements ICustomerService {
     public void addCustomer() {
         String idCustomer;
         do {
-            System.out.println("Mời bạn nhập mã khách hàng");
+            System.out.print("Enter Id for Customer: ");
             idCustomer = sc.nextLine();
             if (ValidateFurama.checkIdCustomer(idCustomer)) {
-                System.out.println("Nhập thành công");
+                System.out.println("Success");
             } else {
-                System.out.println("Bạn nhập không đúng định dạng (KH-XXXX).");
+                System.out.println("You input invalid format(KH-XXXX).");
             }
         } while (!ValidateFurama.checkIdCustomer(idCustomer));
 
         String nameCustomer;
         do {
-            System.out.println("Mời bạn nhâp tên khách hàng: ");
+            System.out.print("Enter Name for Customer: ");
             nameCustomer = sc.nextLine();
             if (ValidateFurama.checkName(nameCustomer)) {
-                System.out.println("Nhập thành công");
+                System.out.println("Success");
             } else {
-                System.out.println("Bạn nhập không đúng định dạng (Viết hoa chữ cái đầu)");
+                System.out.println("You input invalid format(Viết hoa chữ cái đầu)");
             }
         } while (!ValidateFurama.checkName(nameCustomer));
 
         String dayOfBirthCustomer;
         do {
-            System.out.println("Mời bạn nhâp ngày sinh khách hàng (dd/mm/yyyy): ");
+            System.out.print("Enter Day Of Birth for Customer(dd/mm/yyyy): ");
             dayOfBirthCustomer = sc.nextLine();
             if (ValidateFurama.checkDayOfBirth(dayOfBirthCustomer)) {
-                System.out.println("Nhập thành công");
+                System.out.println("Success");
             } else {
-                System.out.println("Bạn nhập không đúng định dạng");
+                System.out.println("You input invalid format");
             }
         } while (!ValidateFurama.checkDayOfBirth(dayOfBirthCustomer));
 
         String genderCustomer = "";
         boolean flag1 = true;
         do {
-            System.out.println("Mời bạn chọn giới tính khách hàng \n" +
-                    "1. Nam \n" +
-                    "2. Nữ");
+            System.out.print("Enter Gender for Customer \n" +
+                    "1. Male \n" +
+                    "2. Female \n" +
+                    "Enter your choice: ");
             String choiceGender = sc.nextLine();
             switch (choiceGender) {
                 case "1":
-                    genderCustomer = "Nam";
+                    genderCustomer = "Male";
                     flag1 = false;
                     break;
                 case "2":
-                    genderCustomer = "Nữ";
+                    genderCustomer = "Female";
                     flag1 = false;
                     break;
                 default:
-                    System.out.println("Không có lựa chọn");
+                    System.out.println("No choice - Enter your choice again!");
                     flag1 = true;
             }
         } while (flag1);
 
         String identilyCardCustomer;
         do {
-            System.out.println("Mời bạn nhâp CMND khách hàng: ");
+            System.out.print("Enter Identity for Customer: ");
             identilyCardCustomer = sc.nextLine();
             if (ValidateFurama.checkIdentity(identilyCardCustomer)) {
-                System.out.println("Nhập thành công");
+                System.out.println("Success");
             } else {
-                System.out.println("Bạn nhập không đúng định dang (9 hoặc 12 số)");
+                System.out.println("You input invalid format(9 or 12 numbes)");
             }
         } while (!ValidateFurama.checkIdentity(identilyCardCustomer));
 
         String phoneNumberCustomer;
         do {
-            System.out.println("Mời bạn nhâp SDT khách hàng: ");
+            System.out.print("Enter Phone Number For Customer: ");
             phoneNumberCustomer = sc.nextLine();
             if (ValidateFurama.checkPhone(phoneNumberCustomer)) {
-                System.out.println("Nhập thành công");
+                System.out.println("Success");
             } else {
-                System.out.println("Bạn nhâp không đúng định dạng(Bắt đầu bằng số 0 và có 10 số)");
+                System.out.println("You input invalid format(Start with number 0 and has 10 numbers)");
             }
         } while (!ValidateFurama.checkPhone(phoneNumberCustomer));
 
-        System.out.println("Mời bạn nhâp email khách hàng: ");
+        System.out.print("Enter Email for Customer: ");
         String emailCustomer = sc.nextLine();
 
         String typeCustomer = "";
         boolean flag2 = true;
         do {
-            System.out.println("Mời bạn chọn loại khách hàng \n" +
+            System.out.print("Please select customer type: \n" +
                     "1. Diamond \n" +
                     "2. Platinum \n" +
                     "3. Gold \n" +
                     "4. Silver\n" +
-                    "5. Member");
+                    "5. Member \n" +
+                    "Enter your choice: ");
             String choiceTypeCustomer = sc.nextLine();
             switch (choiceTypeCustomer) {
                 case "1":
@@ -130,117 +132,119 @@ public class CustomerService implements ICustomerService {
                     flag2 = false;
                     break;
                 default:
-                    System.out.println("Không có lựa chọn");
+                    System.out.println("No choice - Enter your choice again!");
                     flag2 = true;
             }
         } while (flag2);
 
-        System.out.println("Nhập địa chỉ khách hàng : ");
+        System.out.print("Enter address for Customer : ");
         String addressCustomer = sc.nextLine();
         Customer customer = new Customer(idCustomer, nameCustomer, dayOfBirthCustomer, genderCustomer, identilyCardCustomer, phoneNumberCustomer,
                 emailCustomer, typeCustomer, addressCustomer);
         customerRepository.addCustomer(customer);
-        System.out.println("Thêm mới thành công");
+        System.out.println("Add New Customer Successful");
 
     }
 
     @Override
     public void editCustomer() {
-        System.out.println("Nhập tên mã khách hàng cần sửa: ");
+        System.out.println("Enter the name of the customer code that needs to be edited: ");
         String input = sc.nextLine();
         int flag = customerRepository.editCustomer(input);
         if (flag == -1) {
-            System.out.println("Không tìm thấy mã khách hàng");
+            System.out.println("Customer code not found");
         } else {
             String idEdit;
             do {
-                System.out.println("Mời bạn nhập mã khách hàng");
+                System.out.println("Enter code for customer again: ");
                 idEdit = sc.nextLine();
                 if (ValidateFurama.checkIdCustomer(idEdit)) {
-                    System.out.println("Update thành công");
+                    System.out.println("Update Successful");
                 } else {
-                    System.out.println("Bạn nhập không đúng định dạng (NV-XXXX).");
+                    System.out.println("You input invalid format(NV-XXXX).");
                 }
             } while (!ValidateFurama.checkIdCustomer(idEdit));
 
             String nameEdit;
             do {
-                System.out.println("Mời bạn nhâp tên khách hàng ");
+                System.out.println("Enter Name for Customer again: ");
                 nameEdit = sc.nextLine();
                 if (ValidateFurama.checkName(nameEdit)) {
-                    System.out.println("Update thành công");
+                    System.out.println("Update Successful");
                 } else {
-                    System.out.println("Bạn nhập không đúng định dạng (Viết hoa chữ cái đầu)");
+                    System.out.println("You input invalid format(Capitalize first letter)");
                 }
             } while (!ValidateFurama.checkName(nameEdit));
 
             String dayOfBirthEdit;
             do {
-                System.out.println("Mời bạn nhâp ngày sinh khách hàng (dd/mm/yyyy): ");
+                System.out.println("Enter Date Of Birth for Customer again(dd/mm/yyyy): ");
                 dayOfBirthEdit = sc.nextLine();
                 if (ValidateFurama.checkDayOfBirth(dayOfBirthEdit)) {
-                    System.out.println("Update thành công");
+                    System.out.println("Update Successful");
                 } else {
-                    System.out.println("Bạn nhập không đúng định dạng");
+                    System.out.println("You input invalid format");
                 }
             } while (!ValidateFurama.checkDayOfBirth(dayOfBirthEdit));
 
             String genderEdit = "";
             boolean flag6 = true;
             do {
-                System.out.println("Mời bạn chọn giới tính khách hàng \n" +
+                System.out.println("Please select customer gender \n" +
                         "1. Nam \n" +
-                        "2. Nữ");
+                        "2. Nữ\n" +
+                        "Enter your choice: ");
                 String choiceGender = sc.nextLine();
                 switch (choiceGender) {
                     case "1":
-                        genderEdit = "Nam";
+                        genderEdit = "Male";
                         flag6 = false;
                         break;
                     case "2":
-                        genderEdit = "Nữ";
+                        genderEdit = "Female";
                         flag6 = false;
                         break;
                     default:
-                        System.out.println("Không có lựa chọn");
+                        System.out.println("No choice - Enter your choice again!");
                         flag6 = true;
                 }
             } while (flag6);
 
             String identilyCardEdit;
             do {
-                System.out.println("Mời bạn nhâp CMND khách hàng: ");
+                System.out.println("Enter Customer ID Card again: ");
                 identilyCardEdit = sc.nextLine();
                 if (ValidateFurama.checkIdentity(identilyCardEdit)) {
-                    System.out.println("Update thành công");
+                    System.out.println("Update Successful");
                 } else {
-                    System.out.println("Bạn nhập không đúng định dang (9 hoặc 12 số)");
+                    System.out.println("You input invalid format(9 or 12 numbers)");
                 }
             } while (!ValidateFurama.checkIdentity(identilyCardEdit));
             String phoneNumberEdit;
             do {
-                System.out.println("Mời bạn nhâp SDT khách hàng: ");
+                System.out.println("Enter Phone Number for Customer again: ");
                 phoneNumberEdit = sc.nextLine();
                 if (ValidateFurama.checkPhone(phoneNumberEdit)) {
-                    System.out.println("Update thành công");
+                    System.out.println("Update Successful");
                 } else {
-                    System.out.println("Bạn nhâp không đúng định dạng(Bắt đầu bằng số 0 và có 10 số)");
+                    System.out.println("You input invalid format(Start with number 0 and has 10 numbers)");
                 }
             } while (!ValidateFurama.checkPhone(phoneNumberEdit));
 
-            System.out.println("Mời bạn nhâp email khách hàng: ");
+            System.out.println("Enter Email for Customer again: ");
             String emailEdit = sc.nextLine();
-            System.out.println("Update thành công");
+            System.out.println("Update Successful");
 
             String typeCustomerEdit = "";
             boolean flag7 = true;
             do {
-                System.out.println("Mời bạn chọn lại loại khách hàng \n" +
+                System.out.println("Please select the customer type again \n" +
                         "1. Diamond \n" +
                         "2. Platinum \n" +
                         "3. Gold \n" +
                         "4. Silver\n" +
-                        "5. Member");
+                        "5. Member \n" +
+                        "Enter your choice: ");
                 String choiceTypeCustomer = sc.nextLine();
                 switch (choiceTypeCustomer) {
                     case "1":
@@ -264,14 +268,14 @@ public class CustomerService implements ICustomerService {
                         flag7 = false;
                         break;
                     default:
-                        System.out.println("Không có lựa chọn");
+                        System.out.println("No choice - Enter your choice again!");
                         flag7 = true;
                 }
             } while (flag7);
 
             String addressEdit = "";
             try{
-                System.out.println("Nhập lại địa chỉ khách hàng:");
+                System.out.println("Enter address for Customer again:");
                  addressEdit = sc.nextLine();
             } catch (IndexOutOfBoundsException e){
                 e.getStackTrace();

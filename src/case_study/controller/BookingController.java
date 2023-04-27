@@ -13,13 +13,13 @@ public class BookingController {
         boolean flagBooking = true;
         System.out.println("--- MANAGEMENT BOOKING ---");
         do {
-            System.out.println("1. Add new booking \n" +
+            System.out.print("1. Add new booking \n" +
                     "2. Display list booking \n" +
                     "3. Create new contracts \n" +
                     "4. Display list contracts \n" +
                     "5. Edit contractsn \n" +
                     "6. Return main menu \n" +
-                    "Chọn 1 chức năng : ");
+                    "Enter your choice : ");
             String choice = sc.nextLine();
             switch (choice) {
                 case "1":
@@ -36,7 +36,7 @@ public class BookingController {
                     furamaController.displayMenu();
                     break;
                 default:
-                    System.out.println("Không có lựa chọn");
+                    System.out.println("No Choice - Enter Choice Again!");
                     flagBooking = true;
             }
         } while (flagBooking);

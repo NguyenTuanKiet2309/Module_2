@@ -13,11 +13,11 @@ public class FacilityController {
         boolean flagFacility = true;
         System.out.println("--- MANAGEMENT FACILITY ---");
         do {
-            System.out.println("1. Display list facility \n" +
+            System.out.print("1. Display list facility \n" +
                     "2. Add new facility \n" +
                     "3. Display list facility maintenance \n" +
                     "4. Return main menu \n" +
-                    "Chọn 1 chức năng : ");
+                    "Enter your choice : ");
             String choice = sc.nextLine();
             switch (choice) {
                 case "1":
@@ -30,7 +30,7 @@ public class FacilityController {
                     furamaController.displayMenu();
                     break;
                 default:
-                    System.out.println("Không có lựa chọn");
+                    System.out.println("No Choice - Enter Choice Again!");
                     flagFacility = true;
             }
         } while (flagFacility);

@@ -2,21 +2,21 @@ package case_study.model;
 
 public class House extends Facility {
     private String roomStandard;
-    private int floor;
+    private int floorHouse;
 
     public House(String roomStandard, int floor) {
         this.roomStandard = roomStandard;
-        this.floor = floor;
+        this.floorHouse = floor;
     }
 
     public House() {
 
     }
 
-    public House(String idService, String nameService, double area, double price, int maxPeople, String kindType, String roomStandard, int floor) {
+    public House(String idService, String nameService, double area, double price, int maxPeople, String kindType, String roomStandard, int floorHouse) {
         super(idService, nameService, area, price, maxPeople, kindType);
         this.roomStandard = roomStandard;
-        this.floor = floor;
+        this.floorHouse = floorHouse;
     }
 
     public String getRoomStandard() {
@@ -27,19 +27,23 @@ public class House extends Facility {
         this.roomStandard = roomStandard;
     }
 
-    public int getFloor() {
-        return floor;
+    public int getFloorHouse() {
+        return floorHouse;
     }
 
-    public void setFloor(int floor) {
-        this.floor = floor;
+    public void setFloorHouse(int floorHouse) {
+        this.floorHouse = floorHouse;
     }
 
     @Override
     public String toString() {
         return "House{" +
                 "roomStandard='" + roomStandard + '\'' +
-                ", floor=" + floor +
+                ", floor=" + floorHouse +
                 '}';
+    }
+
+    public String writeToFileHouse() {
+        return super.writeToFile() + "," + this.roomStandard +"," + this.floorHouse;
     }
 }

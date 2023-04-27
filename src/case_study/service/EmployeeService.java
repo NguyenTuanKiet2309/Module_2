@@ -18,332 +18,338 @@ public class EmployeeService implements IEmployeeService {
     public void addEmployee() {
         String idEmployee;
         do {
-            System.out.println("Mời bạn nhập mã nhân viên");
+            System.out.print("Enter Id Employee: ");
             idEmployee = sc.nextLine();
             if (ValidateFurama.checkIdEmployee(idEmployee)) {
-                System.out.println("Nhập thành công");
+                System.out.println("Success");
             } else {
-                System.out.println("Bạn nhập không đúng định dạng (NV-XXXX).");
+                System.out.println("You input invalid format(NV-XXXX).");
             }
         } while (!ValidateFurama.checkIdEmployee(idEmployee));
 
         String nameEmployee;
         do {
-            System.out.println("Mời bạn nhâp tên nhân viên: ");
+            System.out.print("Enter Name For Employee: ");
             nameEmployee = sc.nextLine();
             if (ValidateFurama.checkName(nameEmployee)) {
-                System.out.println("Nhập thành công");
+                System.out.println("Success");
             } else {
-                System.out.println("Bạn nhập không đúng định dạng (Viết hoa chữ cái đầu)");
+                System.out.println("You input invalid format(Capitalize first letter)");
             }
         } while (!ValidateFurama.checkName(nameEmployee));
 
         String dayOfBirthEmployee;
         do {
-            System.out.println("Mời bạn nhâp ngày sinh nhân viên (dd/mm/yyyy): ");
+            System.out.print("Enter Day Of Birth For Employee(dd/mm/yyyy): ");
             dayOfBirthEmployee = sc.nextLine();
             if (ValidateFurama.checkDayOfBirth(dayOfBirthEmployee)) {
-                System.out.println("Nhập thành công");
+                System.out.println("Success");
             } else {
-                System.out.println("Bạn nhập không đúng định dạng");
+                System.out.println("You input invalid format");
             }
         } while (!ValidateFurama.checkDayOfBirth(dayOfBirthEmployee));
 
         String genderEmployee = "";
         boolean flag1 = true;
         do {
-            System.out.println("Mời bạn chọn giới tính nhân viên \n" +
-                    "1. Nam \n" +
-                    "2. Nữ");
+            System.out.println("Enter Gender For Employee \n" +
+                    "1. Male \n" +
+                    "2. Female \n" +
+                    "Enter your choice: ");
             String choiceGender = sc.nextLine();
             switch (choiceGender) {
                 case "1":
-                    genderEmployee = "Nam";
+                    genderEmployee = "Male";
                     flag1 = false;
                     break;
                 case "2":
-                    genderEmployee = "Nữ";
+                    genderEmployee = "Female";
                     flag1 = false;
                     break;
                 default:
-                    System.out.println("Không có lựa chọn");
+                    System.out.println("No choice - Enter your choice again!");
                     flag1 = true;
             }
         } while (flag1);
 
         String identilyCardEmployee;
         do {
-            System.out.println("Mời bạn nhâp CMND nhân viên: ");
+            System.out.print("Enter Identity for Employee: ");
             identilyCardEmployee = sc.nextLine();
             if (ValidateFurama.checkIdentity(identilyCardEmployee)) {
-                System.out.println("Nhập thành công");
+                System.out.println("Success");
             } else {
-                System.out.println("Bạn nhập không đúng định dang (9 hoặc 12 số)");
+                System.out.println("You input invalid format(9 or 12 number)");
             }
         } while (!ValidateFurama.checkIdentity(identilyCardEmployee));
 
         String phoneNumberEmployee;
         do {
-            System.out.println("Mời bạn nhâp SDT nhân viên: ");
+            System.out.print("Enter Phone Number For Employee: ");
             phoneNumberEmployee = sc.nextLine();
             if (ValidateFurama.checkPhone(phoneNumberEmployee)) {
-                System.out.println("Nhập thành công");
+                System.out.println("Success");
             } else {
-                System.out.println("Bạn nhâp không đúng định dạng(Bắt đầu bằng số 0 và có 10 số)");
+                System.out.println("You input invalid format(Start by number 0 and has 10 numbers)");
             }
         } while (!ValidateFurama.checkPhone(phoneNumberEmployee));
-        System.out.println("Mời bạn nhâp email nhân viên: ");
+        System.out.print("Enter Email For Employee: ");
         String emailEmployee = sc.nextLine();
 
         String educationEmployee = "";
         boolean flag2 = true;
         do {
-            System.out.println("Mời bạn chọn trình độ nhân viên \n" +
-                    "1. Trung Cấp \n" +
-                    "2. Cao Đẳng \n" +
-                    "3. Đại Học \n" +
-                    "4. Sau Đại Học");
+            System.out.print("Enter Education For Employee \n" +
+                    "1. Intermediate \n" +
+                    "2. College \n" +
+                    "3. University \n" +
+                    "4. After university\n" +
+                    "Enter your choice: ");
             String choiceEducation = sc.nextLine();
             switch (choiceEducation) {
                 case "1":
-                    educationEmployee = "Trung Cấp";
+                    educationEmployee = "Intermediate";
                     flag2 = false;
                     break;
                 case "2":
-                    educationEmployee = "Cao Đẳng";
+                    educationEmployee = "College";
                     flag2 = false;
                     break;
                 case "3":
-                    educationEmployee = "Đại Học";
+                    educationEmployee = "University";
                     flag2 = false;
                     break;
                 case "4":
-                    educationEmployee = "Sau Đại Học";
+                    educationEmployee = "After university";
                     flag2 = false;
                     break;
                 default:
-                    System.out.println("Không có lựa chọn");
+                    System.out.println("No choice - Enter your choice again!");
                     flag2 = true;
             }
         } while (flag2);
         String locationEmployee = "";
         boolean flag3 = true;
         do {
-            System.out.println("Mời bạn chọn vị trí nhân viên \n" +
-                    "1. Lễ Tân \n" +
-                    "2. Phục Vụ \n" +
-                    "3. Chuyên Viên \n" +
-                    "4. Giám sát \n" +
-                    "5. Quản Lý \n" +
-                    "6. Giám Đốc");
+            System.out.print("Enter Location for Employee \n" +
+                    "1. Receptionist \n" +
+                    "2. Serve \n" +
+                    "3. Expert \n" +
+                    "4. Monitor \n" +
+                    "5. Manage \n" +
+                    "6. Manager \n" +
+                    "Enter your choice: ");
             String choiceLocation = sc.nextLine();
             switch (choiceLocation) {
                 case "1":
-                    locationEmployee = "Lễ Tân";
+                    locationEmployee = "Receptionist";
                     flag3 = false;
                     break;
                 case "2":
-                    locationEmployee = "Phục Vụ";
+                    locationEmployee = "Serve";
                     flag3 = false;
                     break;
                 case "3":
-                    locationEmployee = "Chuyên Viên";
+                    locationEmployee = "Expert";
                     flag3 = false;
                     break;
                 case "4":
-                    locationEmployee = "Giám sát";
+                    locationEmployee = "Monitor";
                     flag3 = false;
                     break;
                 case "5":
-                    locationEmployee = "Quản Lý";
+                    locationEmployee = "Manage";
                     flag3 = false;
                     break;
                 case "6":
-                    locationEmployee = "Giám Đốc";
+                    locationEmployee = "Manager";
                     flag3 = false;
                     break;
                 default:
-                    System.out.println("Không có lựa chọn");
+                    System.out.println("No choice - Enter your choice again!");
                     flag3 = true;
             }
         } while (flag3);
-        System.out.println("Mời bạn nhập lương nhân viên:");
+        System.out.print("Enter Salary for Employee: ");
         double salaryEmployee = sc.nextDouble();
         if (salaryEmployee < 0 || salaryEmployee == 0) {
-            System.out.println("Mời bạn nhập lại lương nhân viên (phải lớn hơn 0)");
+            System.out.println("Enter Salary for Employee Again(Must be greater than 0)");
         } else {
-            System.out.println("Nhập thành công");
+            System.out.println("Success");
         }
         Employee employee = new Employee(idEmployee, nameEmployee, dayOfBirthEmployee, genderEmployee, identilyCardEmployee, phoneNumberEmployee
                 , emailEmployee, educationEmployee, locationEmployee, salaryEmployee);
         employeeRepository.addEmployee(employee);
-        System.out.println("Thêm mới thành công");
+        System.out.println("Add New Employee Success!");
     }
 
 
     @Override
     public void editEployee() {
-        System.out.println("Nhập tên mã nhân viên cần sửa: ");
+        System.out.print("Enter the employee code name to be edited: ");
         String input = sc.nextLine();
         int flag = employeeRepository.editEmployee(input);
         if (flag == -1) {
-            System.out.println("Không tìm thấy mã nhân viên");
+            System.out.println("Employee code not found");
         } else {
             String idEdit;
             do {
-                System.out.println("Mời bạn nhập mã nhân viên");
+                System.out.print("Enter Code for Employee: ");
                 idEdit = sc.nextLine();
                 if (ValidateFurama.checkIdEmployee(idEdit)) {
-                    System.out.println("Update thành công");
+                    System.out.println("Update successful");
                 } else {
-                    System.out.println("Bạn nhập không đúng định dạng (NV-XXXX).");
+                    System.out.println("You input invalid format(NV-XXXX).");
                 }
             } while (!ValidateFurama.checkIdEmployee(idEdit));
 
             String nameEdit;
             do {
-                System.out.println("Mời bạn nhâp tên nhân viên: ");
+                System.out.print("Enter Name for Employee: ");
                 nameEdit = sc.nextLine();
                 if (ValidateFurama.checkName(nameEdit)) {
-                    System.out.println("Update thành công");
+                    System.out.println("Update successful");
                 } else {
-                    System.out.println("Bạn nhập không đúng định dạng (Viết hoa chữ cái đầu)");
+                    System.out.println("You input invalid format(Viết hoa chữ cái đầu)");
                 }
             } while (!ValidateFurama.checkName(nameEdit));
             String dayOfBirthEdit;
             do {
-                System.out.println("Mời bạn nhâp ngày sinh nhân viên (dd/mm/yyyy): ");
+                System.out.print("Enter Day Of Birth for Employee(dd/mm/yyyy): ");
                 dayOfBirthEdit = sc.nextLine();
                 if (ValidateFurama.checkDayOfBirth(dayOfBirthEdit)) {
-                    System.out.println("Update thành công");
+                    System.out.println("Update successful");
                 } else {
-                    System.out.println("Bạn nhập không đúng định dạng");
+                    System.out.println("You input invalid format");
                 }
             } while (!ValidateFurama.checkDayOfBirth(dayOfBirthEdit));
             String genderEdit = "";
             boolean flag6 = true;
             do {
-                System.out.println("Mời bạn chọn giới tính nhân viên \n" +
-                        "1. Nam \n" +
-                        "2. Nữ");
+                System.out.print("Enter Gender for Employee \n" +
+                        "1. Male \n" +
+                        "2. Female\n" +
+                        "Enter your choice: ");
                 String choiceGender = sc.nextLine();
                 switch (choiceGender) {
                     case "1":
-                        genderEdit = "Nam";
+                        genderEdit = "Male";
                         flag6 = false;
                         break;
                     case "2":
-                        genderEdit = "Nữ";
+                        genderEdit = "Female";
                         flag6 = false;
                         break;
                     default:
-                        System.out.println("Không có lựa chọn");
+                        System.out.println("No choice - Enter your choice again!");
                         flag6 = true;
                 }
             } while (flag6);
 
             String identilyCardEdit;
             do {
-                System.out.println("Mời bạn nhâp CMND nhân viên: ");
+                System.out.print("Enter Identity for Employee: ");
                 identilyCardEdit = sc.nextLine();
                 if (ValidateFurama.checkIdentity(identilyCardEdit)) {
-                    System.out.println("Update thành công");
+                    System.out.println("Update successful");
                 } else {
-                    System.out.println("Bạn nhập không đúng định dang (9 hoặc 12 số)");
+                    System.out.println("You input invalid format(9 or 12 number)");
                 }
             } while (!ValidateFurama.checkIdentity(identilyCardEdit));
             String phoneNumberEdit;
             do {
-                System.out.println("Mời bạn nhâp SDT nhân viên: ");
+                System.out.print("Enter Phone Number for Employee: ");
                 phoneNumberEdit = sc.nextLine();
                 if (ValidateFurama.checkPhone(phoneNumberEdit)) {
-                    System.out.println("Update thành công");
+                    System.out.println("Update successful");
                 } else {
-                    System.out.println("Bạn nhâp không đúng định dạng(Bắt đầu bằng số 0 và có 10 số)");
+                    System.out.println("You input invalid format(Start by number 0 and has 10 numbers)");
                 }
             } while (!ValidateFurama.checkPhone(phoneNumberEdit));
 
-            System.out.println("Mời bạn nhâp email nhân viên: ");
+            System.out.print("Enter Email for Employee: ");
             String emailEdit = sc.nextLine();
-            System.out.println("Update thành công");
+            System.out.println("Update successful");
             String educationEdit = "";
             boolean flag4 = true;
             do {
-                System.out.println("Mời bạn chọn trình độ nhân viên \n" +
-                        "1. Trung Cấp \n" +
-                        "2. Cao Đẳng \n" +
-                        "3. Đại Học \n" +
-                        "4. Sau Đại Học");
+                System.out.print("Enter Education For Employee \n" +
+                        "1. Intermediate \n" +
+                        "2. College \n" +
+                        "3. University \n" +
+                        "4. After university \n" +
+                        "Enter your choice");
                 String choiceEducation = sc.nextLine();
                 switch (choiceEducation) {
                     case "1":
-                        educationEdit = "Trung Cấp";
+                        educationEdit = "Intermediate";
                         flag4 = false;
                         break;
                     case "2":
-                        educationEdit = "Cao Đẳng";
+                        educationEdit = "College";
                         flag4 = false;
                         break;
                     case "3":
-                        educationEdit = "Đại Học";
+                        educationEdit = "University";
                         flag4 = false;
                         break;
                     case "4":
-                        educationEdit = "Sau Đại Học";
+                        educationEdit = "After university";
                         flag4 = false;
                         break;
                     default:
-                        System.out.println("Không có lựa chọn");
+                        System.out.println("No choice - Enter your choice again!");
                         flag4 = true;
                 }
             } while (flag4);
             String locationEdit = "";
             boolean flag5 = true;
             do {
-                System.out.println("Mời bạn chọn vị trí nhân viên \n" +
-                        "1. Lễ Tân \n" +
-                        "2. Phục Vụ \n" +
-                        "3. Chuyên Viên \n" +
-                        "4. Giám sát \n" +
-                        "5. Quản Lý \n" +
-                        "6. Giám Đốc");
+                System.out.print("Enter Location for Employee \n" +
+                        "1. Receptionist \n" +
+                        "2. Serve \n" +
+                        "3. Expert \n" +
+                        "4. Monitor \n" +
+                        "5. Manage \n" +
+                        "6. Manager" +
+                        "Enter your choice");
                 String choiceLocation = sc.nextLine();
                 switch (choiceLocation) {
                     case "1":
-                        locationEdit = "Lễ Tân";
+                        locationEdit = "Receptionist";
                         flag5 = false;
                         break;
                     case "2":
-                        locationEdit = "Phục Vụ";
+                        locationEdit = "Serve";
                         flag5 = false;
                         break;
                     case "3":
-                        locationEdit = "Chuyên Viên";
+                        locationEdit = "Expert";
                         flag5 = false;
                         break;
                     case "4":
-                        locationEdit = "Giám sát";
+                        locationEdit = "Monitor";
                         flag5 = false;
                         break;
                     case "5":
-                        locationEdit = "Quản Lý";
+                        locationEdit = "Manage";
                         flag5 = false;
                         break;
                     case "6":
-                        locationEdit = "Giám Đốc";
+                        locationEdit = "Manager";
                         flag5 = false;
                         break;
                     default:
-                        System.out.println("Không có lựa chọn");
+                        System.out.println("No choice - Enter your choice again!");
                         flag5 = true;
                 }
             } while (flag5);
-            System.out.println("Mời bạn nhập lương nhân viên:");
+            System.out.print("Enter Salary for Employee: ");
             double salaryEdit = sc.nextDouble();
             if (salaryEdit < 0 || salaryEdit == 0) {
-                System.out.println("Mời bạn nhập lại lương nhân viên (phải lớn hơn 0)");
+                System.out.println("Enter Salary for Employee Again(Must be greater than 0)");
             } else {
-                System.out.println("Update thành công");
+                System.out.println("Update successful");
             }
             Employee employee = new Employee(idEdit, nameEdit, dayOfBirthEdit, genderEdit, identilyCardEdit, phoneNumberEdit,
                     emailEdit, educationEdit, locationEdit, salaryEdit);

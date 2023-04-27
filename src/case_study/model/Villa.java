@@ -3,23 +3,24 @@ package case_study.model;
 public class Villa extends Facility {
     private String roomStandard;
     private double areaPool;
-    private int floor;
+    private int floorVilla;
 
-    public Villa(){
+    public Villa() {
 
     }
 
     public Villa(String roomStandard, double areaPool, int floor) {
         this.roomStandard = roomStandard;
         this.areaPool = areaPool;
-        this.floor = floor;
+        this.floorVilla = floor;
     }
 
-    public Villa(String idService, String nameService, double area, double price, int maxPeople, String kindType, String roomStandard, double areaPool, int floor) {
+    public Villa(String idService, String nameService, double area, double price, int maxPeople,
+                 String kindType, String roomStandard, double areaPool, int floorVilla) {
         super(idService, nameService, area, price, maxPeople, kindType);
         this.roomStandard = roomStandard;
         this.areaPool = areaPool;
-        this.floor = floor;
+        this.floorVilla = floorVilla;
     }
 
     public String getRoomStandard() {
@@ -38,12 +39,12 @@ public class Villa extends Facility {
         this.areaPool = areaPool;
     }
 
-    public int getFloor() {
-        return floor;
+    public int getFloorVilla() {
+        return floorVilla;
     }
 
-    public void setFloor(int floor) {
-        this.floor = floor;
+    public void setFloorVilla(int floorVilla) {
+        this.floorVilla = floorVilla;
     }
 
     @Override
@@ -51,7 +52,11 @@ public class Villa extends Facility {
         return "Villa{" +
                 "roomStandard='" + roomStandard + '\'' +
                 ", areaPool=" + areaPool +
-                ", floor=" + floor +
+                ", floor=" + floorVilla +
                 '}';
+    }
+
+    public String writeToFileVilla() {
+        return super.writeToFile() + "," + this.roomStandard + "," + this.areaPool + "," + this.floorVilla;
     }
 }

@@ -16,13 +16,13 @@ public class FuramaController {
         System.out.println("--- MANAGEMENT RESORT FURAMA ---");
         boolean flag = true;
         do {
-            System.out.println("1. Employee Management \n" +
+            System.out.print("1. Employee Management \n" +
                     "2. Customer Management \n" +
                     "3. Facility Management \n" +
                     "4. Booking Management \n" +
                     "5. Promotion Management \n" +
                     "6. Exit! \n" +
-                    "Chọn 1 chức năng : ");
+                    "Enter your choice : ");
             String choice = sc.nextLine();
             switch (choice) {
                 case "1":
@@ -41,8 +41,18 @@ public class FuramaController {
                     promotionController.displayPromotion();
                     break;
                 case "6":
-                    System.out.println("Nice To Meet You - Have A Nice Day !!!");
-                    System.exit(0);
+                    System.out.print("Are you sure you want to exit? \n" +
+                            "1. Yes \n" +
+                            "2. No \n" +
+                            "Enter your choice: ");
+                    String choiceExit = sc.nextLine();
+                    if (choiceExit.equals("1")){
+                        System.out.println("Nice To Meet You - Have A Nice Day !!!");
+                        System.exit(0);
+                    } else if(choiceExit.equals("2")){
+                        System.out.println("Good choice - Please Continue Your Jobs.");
+                        displayMenu();
+                    }
                 default:
                     System.out.println("No Choice - Enter Choice Again! ");
                     flag = true;

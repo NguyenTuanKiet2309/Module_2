@@ -79,4 +79,9 @@ public abstract class Facility {
                 ", kindType='" + kindType + '\'' +
                 '}';
     }
+
+
+    public String writeToFile() {
+        return this.idService + "," + this.nameService + "," + this.area + "," + this.price + "," + this.maxPeople + "," + this.kindType;
+    }
 }

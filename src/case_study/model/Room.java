@@ -30,4 +30,8 @@ public class Room extends Facility {
                 "freeService='" + freeService + '\'' +
                 '}';
     }
+
+    public String writeToFileRoom(){
+        return super.writeToFile() + "," + this.freeService;
+    }
 }

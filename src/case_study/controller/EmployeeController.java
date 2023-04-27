@@ -14,11 +14,11 @@ public class EmployeeController {
         boolean flagEmployee = true;
         System.out.println("--- MANAGEMENT EMPLOYEE ---");
         do {
-            System.out.println("1. Display list employees \n" +
+            System.out.print("1. Display list employees \n" +
                     "2. Add new employee \n" +
                     "3. Edit employee \n" +
                     "4. Return main menu \n" +
-                    "Chọn 1 chức năng : ");
+                    "Enter your choice : ");
             String choice = sc.nextLine();
             switch (choice) {
                 case "1":
@@ -34,7 +34,7 @@ public class EmployeeController {
                     furamaController.displayMenu();
                     break;
                 default:
-                    System.out.println("Không có lựa chọn");
+                    System.out.println("No Choice - Enter Choice Again!");
                     flagEmployee = true;
 
             }

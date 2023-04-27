@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class ValidateFurama {
     static final String ID_EMPLOYEE_REGEX = "^(NV)-[0-9]{4}$";
     static final String ID_CUSTOTMER_REGEX = "^(KH)-[0-9]{4}$";
-    static final String NAME_REGEX = "^([A-Z]{1}[a-z ]+){2,5}$";
+    static final String NAME_REGEX = "^([A-Z][a-z]{2,9}(\\\\s)){1,3}([A-Z][a-z]{2,9})$";
     static final String AGE_REGEX = "^\\d{1,2}[-|/]\\d{1,2}[-|/]\\d{4}$";
     static final String IDENTITY_REGEX = "^([0-9]{9}|[0-9]{12})$";
     static final String PHONE_REGEX = "^(0){1}[0-9]{9}$";
