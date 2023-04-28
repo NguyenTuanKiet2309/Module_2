@@ -1,60 +1,55 @@
 package case_study.service;
 
 import case_study.model.Customer;
-import case_study.model.Employee;
 import case_study.repository.CustomerRepository;
 import case_study.utils.ReadAndWriteToFileCustomer;
-import case_study.utils.ReadAndWriteToFileEmployee;
 import case_study.utils.ValidateFurama;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 public class CustomerService implements ICustomerService {
     Scanner sc = new Scanner(System.in);
     private CustomerRepository customerRepository = new CustomerRepository();
-    private static final String CUSTOMER_PATH = "src/case_study/data/customer.csv";
-    List<Customer> customerList = customerRepository.getCustomerList();
 
     @Override
     public void addCustomer() {
         String idCustomer;
         do {
-            System.out.print("Enter Id for Customer: ");
+            System.out.print("Enter Id Customer: ");
             idCustomer = sc.nextLine();
-            if (ValidateFurama.checkIdCustomer(idCustomer)) {
-                System.out.println("Success");
-            } else {
-                System.out.println("You input invalid format(KH-XXXX).");
+            if (!ValidateFurama.checkIdCustomer(idCustomer)) {
+                System.out.println("You input invalid format(KH-XXXX)");
             }
         } while (!ValidateFurama.checkIdCustomer(idCustomer));
 
         String nameCustomer;
         do {
-            System.out.print("Enter Name for Customer: ");
+            System.out.print("Enter Name Customer: ");
             nameCustomer = sc.nextLine();
-            if (ValidateFurama.checkName(nameCustomer)) {
-                System.out.println("Success");
-            } else {
-                System.out.println("You input invalid format(Viết hoa chữ cái đầu)");
+            if (!ValidateFurama.checkName(nameCustomer)) {
+                System.out.println("You input invalid format(Capitalize first letter)");
             }
         } while (!ValidateFurama.checkName(nameCustomer));
 
         String dayOfBirthCustomer;
+        boolean checkAge = true;
         do {
-            System.out.print("Enter Day Of Birth for Customer(dd/mm/yyyy): ");
+            System.out.print("Enter Day Of Birth Customer(dd/mm/yyyy): ");
             dayOfBirthCustomer = sc.nextLine();
-            if (ValidateFurama.checkDayOfBirth(dayOfBirthCustomer)) {
-                System.out.println("Success");
+            LocalDate localDate = LocalDate.parse(dayOfBirthCustomer);
+            if (ValidateFurama.checkDayOfBirth(dayOfBirthCustomer) && ValidateFurama.checkAge(localDate) >= 18) {
+               checkAge = false;
             } else {
-                System.out.println("You input invalid format");
+                System.out.println("You input invalid format or under 18 age.");
             }
-        } while (!ValidateFurama.checkDayOfBirth(dayOfBirthCustomer));
+        } while (checkAge);
 
         String genderCustomer = "";
         boolean flag1 = true;
         do {
-            System.out.print("Enter Gender for Customer \n" +
+            System.out.print("Enter Gender Customer \n" +
                     "1. Male \n" +
                     "2. Female \n" +
                     "Enter your choice: ");
@@ -78,25 +73,21 @@ public class CustomerService implements ICustomerService {
         do {
             System.out.print("Enter Identity for Customer: ");
             identilyCardCustomer = sc.nextLine();
-            if (ValidateFurama.checkIdentity(identilyCardCustomer)) {
-                System.out.println("Success");
-            } else {
+            if (!ValidateFurama.checkIdentity(identilyCardCustomer)) {
                 System.out.println("You input invalid format(9 or 12 numbes)");
             }
         } while (!ValidateFurama.checkIdentity(identilyCardCustomer));
 
         String phoneNumberCustomer;
         do {
-            System.out.print("Enter Phone Number For Customer: ");
+            System.out.print("Enter Phone Number Customer: ");
             phoneNumberCustomer = sc.nextLine();
-            if (ValidateFurama.checkPhone(phoneNumberCustomer)) {
-                System.out.println("Success");
-            } else {
+            if (!ValidateFurama.checkPhone(phoneNumberCustomer)) {
                 System.out.println("You input invalid format(Start with number 0 and has 10 numbers)");
             }
         } while (!ValidateFurama.checkPhone(phoneNumberCustomer));
 
-        System.out.print("Enter Email for Customer: ");
+        System.out.print("Enter Email Customer: ");
         String emailCustomer = sc.nextLine();
 
         String typeCustomer = "";
@@ -137,10 +128,11 @@ public class CustomerService implements ICustomerService {
             }
         } while (flag2);
 
-        System.out.print("Enter address for Customer : ");
+        System.out.print("Enter address Customer: ");
         String addressCustomer = sc.nextLine();
-        Customer customer = new Customer(idCustomer, nameCustomer, dayOfBirthCustomer, genderCustomer, identilyCardCustomer, phoneNumberCustomer,
-                emailCustomer, typeCustomer, addressCustomer);
+
+        Customer customer = new Customer(idCustomer, nameCustomer, dayOfBirthCustomer, genderCustomer, identilyCardCustomer,
+                phoneNumberCustomer, emailCustomer, typeCustomer, addressCustomer);
         customerRepository.addCustomer(customer);
         System.out.println("Add New Customer Successful");
 
@@ -150,7 +142,7 @@ public class CustomerService implements ICustomerService {
     public void editCustomer() {
         System.out.println("Enter the name of the customer code that needs to be edited: ");
         String input = sc.nextLine();
-        int flag = customerRepository.editCustomer(input);
+        int flag = customerRepository.findIdCustomer(input);
         if (flag == -1) {
             System.out.println("Customer code not found");
         } else {
@@ -177,22 +169,24 @@ public class CustomerService implements ICustomerService {
             } while (!ValidateFurama.checkName(nameEdit));
 
             String dayOfBirthEdit;
+            boolean checkAge = true;
             do {
-                System.out.println("Enter Date Of Birth for Customer again(dd/mm/yyyy): ");
+                System.out.println("Enter Date Of Birth for Customer again(yyyy-mm-dd): ");
                 dayOfBirthEdit = sc.nextLine();
-                if (ValidateFurama.checkDayOfBirth(dayOfBirthEdit)) {
-                    System.out.println("Update Successful");
+                LocalDate localDate = LocalDate.parse(dayOfBirthEdit);
+                if (ValidateFurama.checkDayOfBirth(dayOfBirthEdit)&& ValidateFurama.checkAge(localDate) >= 18) {
+                    checkAge = false;
                 } else {
-                    System.out.println("You input invalid format");
+                    System.out.println("You input invalid format(yyyy-mm-dd)");
                 }
-            } while (!ValidateFurama.checkDayOfBirth(dayOfBirthEdit));
+            } while (checkAge);
 
             String genderEdit = "";
             boolean flag6 = true;
             do {
                 System.out.println("Please select customer gender \n" +
-                        "1. Nam \n" +
-                        "2. Nữ\n" +
+                        "1. Male \n" +
+                        "2. Female \n" +
                         "Enter your choice: ");
                 String choiceGender = sc.nextLine();
                 switch (choiceGender) {
@@ -276,17 +270,17 @@ public class CustomerService implements ICustomerService {
             String addressEdit = "";
             try{
                 System.out.println("Enter address for Customer again:");
-                 addressEdit = sc.nextLine();
+                addressEdit = sc.nextLine();
             } catch (IndexOutOfBoundsException e){
                 e.getStackTrace();
             }
 
             Customer customer = new Customer(idEdit, nameEdit, dayOfBirthEdit, genderEdit, identilyCardEdit,
                     phoneNumberEdit, emailEdit, typeCustomerEdit, addressEdit);
-            customerList.set(flag, customer);
-            ReadAndWriteToFileCustomer.writeFile(customerList, CUSTOMER_PATH);
+            customerRepository.editCustomer(customer);
+            System.out.println("Update Successful!");
         }
-    }
+}
 
     @Override
     public void showCustomerList() {

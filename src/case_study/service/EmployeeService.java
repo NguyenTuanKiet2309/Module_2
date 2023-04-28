@@ -5,14 +5,13 @@ import case_study.repository.EmployeeRepository;
 import case_study.utils.ReadAndWriteToFileEmployee;
 import case_study.utils.ValidateFurama;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeService implements IEmployeeService {
     Scanner sc = new Scanner(System.in);
     private EmployeeRepository employeeRepository = new EmployeeRepository();
-    private static final String EMPLOYEE_PATH = "src/case_study/data/employee.csv";
-    List<Employee> employeeList = employeeRepository.getEmployeeList();
 
     @Override
     public void addEmployee() {
@@ -20,39 +19,37 @@ public class EmployeeService implements IEmployeeService {
         do {
             System.out.print("Enter Id Employee: ");
             idEmployee = sc.nextLine();
-            if (ValidateFurama.checkIdEmployee(idEmployee)) {
-                System.out.println("Success");
-            } else {
-                System.out.println("You input invalid format(NV-XXXX).");
+            if (!ValidateFurama.checkIdEmployee(idEmployee)) {
+                System.out.println("You input invalid format(NV-XXXX)");
             }
         } while (!ValidateFurama.checkIdEmployee(idEmployee));
 
         String nameEmployee;
         do {
-            System.out.print("Enter Name For Employee: ");
+            System.out.print("Enter Name Employee: ");
             nameEmployee = sc.nextLine();
-            if (ValidateFurama.checkName(nameEmployee)) {
-                System.out.println("Success");
-            } else {
+            if (!ValidateFurama.checkName(nameEmployee)) {
                 System.out.println("You input invalid format(Capitalize first letter)");
             }
         } while (!ValidateFurama.checkName(nameEmployee));
 
         String dayOfBirthEmployee;
+        boolean checkAge = true;
         do {
-            System.out.print("Enter Day Of Birth For Employee(dd/mm/yyyy): ");
+            System.out.print("Enter Day Of Birth Employee(yyyy-mm-dd): ");
             dayOfBirthEmployee = sc.nextLine();
-            if (ValidateFurama.checkDayOfBirth(dayOfBirthEmployee)) {
-                System.out.println("Success");
+            LocalDate localDate = LocalDate.parse(dayOfBirthEmployee);
+            if (ValidateFurama.checkDayOfBirth(dayOfBirthEmployee) && ValidateFurama.checkAge(localDate) >= 18) {
+                checkAge = false;
             } else {
-                System.out.println("You input invalid format");
+                System.out.println("You input invalid format or under 18 age");
             }
-        } while (!ValidateFurama.checkDayOfBirth(dayOfBirthEmployee));
+        } while (checkAge);
 
         String genderEmployee = "";
         boolean flag1 = true;
         do {
-            System.out.println("Enter Gender For Employee \n" +
+            System.out.print("Enter Gender Employee \n" +
                     "1. Male \n" +
                     "2. Female \n" +
                     "Enter your choice: ");
@@ -74,22 +71,18 @@ public class EmployeeService implements IEmployeeService {
 
         String identilyCardEmployee;
         do {
-            System.out.print("Enter Identity for Employee: ");
+            System.out.print("Enter Identity Employee: ");
             identilyCardEmployee = sc.nextLine();
-            if (ValidateFurama.checkIdentity(identilyCardEmployee)) {
-                System.out.println("Success");
-            } else {
+            if (!ValidateFurama.checkIdentity(identilyCardEmployee)) {
                 System.out.println("You input invalid format(9 or 12 number)");
             }
         } while (!ValidateFurama.checkIdentity(identilyCardEmployee));
 
         String phoneNumberEmployee;
         do {
-            System.out.print("Enter Phone Number For Employee: ");
+            System.out.print("Enter Phone Number Employee: ");
             phoneNumberEmployee = sc.nextLine();
-            if (ValidateFurama.checkPhone(phoneNumberEmployee)) {
-                System.out.println("Success");
-            } else {
+            if (!ValidateFurama.checkPhone(phoneNumberEmployee)) {
                 System.out.println("You input invalid format(Start by number 0 and has 10 numbers)");
             }
         } while (!ValidateFurama.checkPhone(phoneNumberEmployee));
@@ -99,7 +92,7 @@ public class EmployeeService implements IEmployeeService {
         String educationEmployee = "";
         boolean flag2 = true;
         do {
-            System.out.print("Enter Education For Employee \n" +
+            System.out.print("Enter Education Employee \n" +
                     "1. Intermediate \n" +
                     "2. College \n" +
                     "3. University \n" +
@@ -131,7 +124,7 @@ public class EmployeeService implements IEmployeeService {
         String locationEmployee = "";
         boolean flag3 = true;
         do {
-            System.out.print("Enter Location for Employee \n" +
+            System.out.print("Enter Location Employee \n" +
                     "1. Receptionist \n" +
                     "2. Serve \n" +
                     "3. Expert \n" +
@@ -170,13 +163,12 @@ public class EmployeeService implements IEmployeeService {
                     flag3 = true;
             }
         } while (flag3);
-        System.out.print("Enter Salary for Employee: ");
-        double salaryEmployee = sc.nextDouble();
-        if (salaryEmployee < 0 || salaryEmployee == 0) {
-            System.out.println("Enter Salary for Employee Again(Must be greater than 0)");
-        } else {
-            System.out.println("Success");
-        }
+        double salaryEmployee;
+        do {
+            System.out.print("Enter Salary Employee: ");
+            salaryEmployee = Double.parseDouble(sc.nextLine());
+        } while (salaryEmployee <= 0);
+
         Employee employee = new Employee(idEmployee, nameEmployee, dayOfBirthEmployee, genderEmployee, identilyCardEmployee, phoneNumberEmployee
                 , emailEmployee, educationEmployee, locationEmployee, salaryEmployee);
         employeeRepository.addEmployee(employee);
@@ -185,48 +177,46 @@ public class EmployeeService implements IEmployeeService {
 
 
     @Override
-    public void editEployee() {
+    public void editEmployee() {
         System.out.print("Enter the employee code name to be edited: ");
-        String input = sc.nextLine();
-        int flag = employeeRepository.editEmployee(input);
-        if (flag == -1) {
-            System.out.println("Employee code not found");
+        String idEmployee = sc.nextLine();
+        int checkIdEmployee = employeeRepository.findIdEmployee(idEmployee);
+        if (checkIdEmployee == -1) {
+            System.out.println("Employee code not found.");
         } else {
             String idEdit;
             do {
-                System.out.print("Enter Code for Employee: ");
+                System.out.print("Enter Code Employee: ");
                 idEdit = sc.nextLine();
-                if (ValidateFurama.checkIdEmployee(idEdit)) {
-                    System.out.println("Update successful");
-                } else {
+                if (!ValidateFurama.checkIdEmployee(idEdit)) {
                     System.out.println("You input invalid format(NV-XXXX).");
                 }
             } while (!ValidateFurama.checkIdEmployee(idEdit));
 
             String nameEdit;
             do {
-                System.out.print("Enter Name for Employee: ");
+                System.out.print("Enter Name Employee: ");
                 nameEdit = sc.nextLine();
-                if (ValidateFurama.checkName(nameEdit)) {
-                    System.out.println("Update successful");
-                } else {
-                    System.out.println("You input invalid format(Viết hoa chữ cái đầu)");
+                if (!ValidateFurama.checkName(nameEdit)) {
+                    System.out.println("You input invalid format(Capitalize first letter)");
                 }
             } while (!ValidateFurama.checkName(nameEdit));
             String dayOfBirthEdit;
+            boolean checkAge = true;
             do {
-                System.out.print("Enter Day Of Birth for Employee(dd/mm/yyyy): ");
+                System.out.print("Enter Day Of Birth Employee: ");
                 dayOfBirthEdit = sc.nextLine();
-                if (ValidateFurama.checkDayOfBirth(dayOfBirthEdit)) {
-                    System.out.println("Update successful");
+                LocalDate localDate = LocalDate.parse(dayOfBirthEdit);
+                if (ValidateFurama.checkDayOfBirth(dayOfBirthEdit) && ValidateFurama.checkAge(localDate) >= 18) {
+                   checkAge =false;
                 } else {
-                    System.out.println("You input invalid format");
+                    System.out.println("You input invalid format(yyyy-mm-dd)");
                 }
-            } while (!ValidateFurama.checkDayOfBirth(dayOfBirthEdit));
+            } while (checkAge);
             String genderEdit = "";
             boolean flag6 = true;
             do {
-                System.out.print("Enter Gender for Employee \n" +
+                System.out.print("Enter Gender Employee \n" +
                         "1. Male \n" +
                         "2. Female\n" +
                         "Enter your choice: ");
@@ -248,37 +238,32 @@ public class EmployeeService implements IEmployeeService {
 
             String identilyCardEdit;
             do {
-                System.out.print("Enter Identity for Employee: ");
+                System.out.print("Enter Identity Employee: ");
                 identilyCardEdit = sc.nextLine();
-                if (ValidateFurama.checkIdentity(identilyCardEdit)) {
-                    System.out.println("Update successful");
-                } else {
+                if (!ValidateFurama.checkIdentity(identilyCardEdit)) {
                     System.out.println("You input invalid format(9 or 12 number)");
                 }
             } while (!ValidateFurama.checkIdentity(identilyCardEdit));
             String phoneNumberEdit;
             do {
-                System.out.print("Enter Phone Number for Employee: ");
+                System.out.print("Enter Phone Number Employee: ");
                 phoneNumberEdit = sc.nextLine();
-                if (ValidateFurama.checkPhone(phoneNumberEdit)) {
-                    System.out.println("Update successful");
-                } else {
+                if (!ValidateFurama.checkPhone(phoneNumberEdit)) {
                     System.out.println("You input invalid format(Start by number 0 and has 10 numbers)");
                 }
             } while (!ValidateFurama.checkPhone(phoneNumberEdit));
 
-            System.out.print("Enter Email for Employee: ");
+            System.out.print("Enter Email Employee: ");
             String emailEdit = sc.nextLine();
-            System.out.println("Update successful");
             String educationEdit = "";
             boolean flag4 = true;
             do {
-                System.out.print("Enter Education For Employee \n" +
+                System.out.print("Enter Education Employee \n" +
                         "1. Intermediate \n" +
                         "2. College \n" +
                         "3. University \n" +
                         "4. After university \n" +
-                        "Enter your choice");
+                        "Enter your choice: ");
                 String choiceEducation = sc.nextLine();
                 switch (choiceEducation) {
                     case "1":
@@ -305,14 +290,14 @@ public class EmployeeService implements IEmployeeService {
             String locationEdit = "";
             boolean flag5 = true;
             do {
-                System.out.print("Enter Location for Employee \n" +
+                System.out.print("Enter Location Employee \n" +
                         "1. Receptionist \n" +
                         "2. Serve \n" +
                         "3. Expert \n" +
                         "4. Monitor \n" +
                         "5. Manage \n" +
                         "6. Manager" +
-                        "Enter your choice");
+                        "Enter your choice: ");
                 String choiceLocation = sc.nextLine();
                 switch (choiceLocation) {
                     case "1":
@@ -344,17 +329,15 @@ public class EmployeeService implements IEmployeeService {
                         flag5 = true;
                 }
             } while (flag5);
-            System.out.print("Enter Salary for Employee: ");
-            double salaryEdit = sc.nextDouble();
-            if (salaryEdit < 0 || salaryEdit == 0) {
-                System.out.println("Enter Salary for Employee Again(Must be greater than 0)");
-            } else {
-                System.out.println("Update successful");
-            }
+            double salaryEdit;
+            do {
+                System.out.print("Enter Salary Employee: ");
+                salaryEdit = Double.parseDouble(sc.nextLine());
+            } while (salaryEdit <= 0);
             Employee employee = new Employee(idEdit, nameEdit, dayOfBirthEdit, genderEdit, identilyCardEdit, phoneNumberEdit,
                     emailEdit, educationEdit, locationEdit, salaryEdit);
-            employeeList.set(flag, employee);
-            ReadAndWriteToFileEmployee.writeFile(employeeList, EMPLOYEE_PATH);
+            employeeRepository.editEmployee(employee);
+            System.out.println("Update Successful!");
         }
     }
 

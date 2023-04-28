@@ -35,6 +35,8 @@ public class ReadAndWriteToFileEmployee {
             String temp;
             while ((temp = bufferedReader.readLine()) != null && !temp.equals("")) {
                 String[] tempArr = temp.split(",");
+//                String idEmployee, String namePerson, String dayOfBirth, String gender, String identityCard,
+//                String phoneNumber, String email, String education, String location, double salary
                 Employee employee = new Employee(
                         tempArr[0],
                         tempArr[1],

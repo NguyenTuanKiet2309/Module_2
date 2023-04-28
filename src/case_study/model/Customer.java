@@ -5,14 +5,14 @@ public class Customer extends Person {
     private String typeCustomer;
     private String address;
 
-    public Customer(String idCustomer,String typeCustomer, String address) {
+    public Customer(String idCustomer, String typeCustomer, String address) {
         this.idCustomer = idCustomer;
         this.typeCustomer = typeCustomer;
         this.address = address;
     }
 
     public Customer(String idCustomer, String namePerson, String dayOfBirth, String gender, String identityCard, String phoneNumber,
-                    String email,  String typeCustomer, String address) {
+                    String email, String typeCustomer, String address) {
         super(namePerson, dayOfBirth, gender, identityCard, phoneNumber, email);
         this.idCustomer = idCustomer;
         this.typeCustomer = typeCustomer;
@@ -59,7 +59,7 @@ public class Customer extends Person {
     }
 
     public String writeToFileCustomer() {
-        return  this.idCustomer + "," + super.getNamePerson() + "," + super.getDayOfBirth() + "," + super.getGender()
+        return this.idCustomer + "," + super.getNamePerson() + "," + super.getDayOfBirth() + "," + super.getGender()
                 + "," + super.getIdentityCard() + "," + super.getPhoneNumber() + "," + super.getEmail()
                 + "," + this.typeCustomer + "," + this.address;
     }

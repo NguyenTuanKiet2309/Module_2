@@ -23,13 +23,19 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public int editEmployee(String input) {
+    public int findIdEmployee(String idEmployee) {
         int size = employeeList.size();
         for (int i = 0; i < size; i++) {
-            if (employeeList.get(i).getIdEmployee().equals(input)) {
+            if (employeeList.get(i).getIdEmployee().equals(idEmployee)) {
                 return i;
             }
         }
         return -1;
+    }
+
+    @Override
+    public void editEmployee(Employee employee) {
+        employeeList.set(findIdEmployee(employee.getIdEmployee()), employee);
+        ReadAndWriteToFileEmployee.writeFile(employeeList, EMPLOYEE_PATH);
     }
 }

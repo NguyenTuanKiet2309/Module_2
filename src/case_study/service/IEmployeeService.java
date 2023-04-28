@@ -5,7 +5,7 @@ import case_study.model.Employee;
 public interface IEmployeeService {
     void addEmployee();
 
-    void editEployee();
+    void editEmployee();
 
     void showEmployeeList();
 }

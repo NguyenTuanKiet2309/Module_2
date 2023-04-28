@@ -1,7 +1,7 @@
 package case_study.model;
 
 public class Contract {
-//    contract number, booking code, advance deposit, total payment
+    //    contract number, booking code, advance deposit, total payment
     private String contractNumber;
     private String codeBooking;
     private String advanceDeposit;

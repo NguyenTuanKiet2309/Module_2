@@ -34,6 +34,8 @@ public class ReadAndWriteToFileCustomer {
             String temp;
             while ((temp = bufferedReader.readLine()) != null && !temp.equals("")) {
                 String[] tempArr = temp.split(",");
+//                String idCustomer, String namePerson, String dayOfBirth, String gender, String identityCard,
+//                String phoneNumber, String email,  String typeCustomer, String address
                 Customer customer = new Customer(
                         tempArr[0],
                         tempArr[1],

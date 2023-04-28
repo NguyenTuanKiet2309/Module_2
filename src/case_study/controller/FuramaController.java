@@ -46,10 +46,10 @@ public class FuramaController {
                             "2. No \n" +
                             "Enter your choice: ");
                     String choiceExit = sc.nextLine();
-                    if (choiceExit.equals("1")){
+                    if (choiceExit.equals("1")) {
                         System.out.println("Nice To Meet You - Have A Nice Day !!!");
                         System.exit(0);
-                    } else if(choiceExit.equals("2")){
+                    } else if (choiceExit.equals("2")) {
                         System.out.println("Good choice - Please Continue Your Jobs.");
                         displayMenu();
                     }

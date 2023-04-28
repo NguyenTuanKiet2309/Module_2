@@ -23,6 +23,29 @@ public class FacilityController {
                 case "1":
                     break;
                 case "2":
+                    boolean flagAdd = true;
+                    do {
+                        System.out.print("1. Add new Villa \n" +
+                                "2. Add new House \n" +
+                                "3. Add new Room \n" +
+                                "4. Back to menu \n" +
+                                "Enter your choice: ");
+                        String choiceAdd = sc.nextLine();
+                        switch (choiceAdd) {
+                            case "1":
+                                break;
+                            case "2":
+                                break;
+                            case "3":
+                                break;
+                            case "4":
+                                displayFacility();
+                                break;
+                            default:
+                                System.out.println("No Choice - Enter Choice Again!");
+                                flagAdd = true;
+                        }
+                    } while (flagAdd);
                     break;
                 case "3":
                     break;

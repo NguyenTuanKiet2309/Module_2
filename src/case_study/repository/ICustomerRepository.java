@@ -4,10 +4,12 @@ import case_study.model.Customer;
 
 import java.util.List;
 
-public interface ICustomerRepository{
+public interface ICustomerRepository {
     List<Customer> getCustomerList();
 
     void addCustomer(Customer customer);
 
-    int editCustomer(String input);
+    int findIdCustomer(String input);
+
+    void editCustomer(Customer customer);
 }

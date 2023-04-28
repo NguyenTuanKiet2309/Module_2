@@ -2,7 +2,6 @@ package case_study.controller;
 
 import case_study.service.EmployeeService;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class EmployeeController {
@@ -28,7 +27,7 @@ public class EmployeeController {
                     employeeService.addEmployee();
                     break;
                 case "3":
-                    employeeService.editEployee();
+                    employeeService.editEmployee();
                     break;
                 case "4":
                     furamaController.displayMenu();

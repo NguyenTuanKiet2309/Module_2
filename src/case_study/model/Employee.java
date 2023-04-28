@@ -70,7 +70,7 @@ public class Employee extends Person {
     }
 
     public String writeToFileEmployee() {
-        return  this.idEmployee + "," + super.getNamePerson() + "," + super.getDayOfBirth() + "," + super.getGender()
+        return this.idEmployee + "," + super.getNamePerson() + "," + super.getDayOfBirth() + "," + super.getGender()
                 + "," + super.getIdentityCard() + "," + super.getPhoneNumber() + "," + super.getEmail()
                 + "," + this.education + "," + this.location + "," + this.salary;
     }

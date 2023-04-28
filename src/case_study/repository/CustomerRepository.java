@@ -1,9 +1,7 @@
 package case_study.repository;
 
 import case_study.model.Customer;
-import case_study.model.Employee;
 import case_study.utils.ReadAndWriteToFileCustomer;
-import case_study.utils.ReadAndWriteToFileEmployee;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +23,19 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public int editCustomer(String input) {
+    public int findIdCustomer(String idCustomer) {
         int size = customersList.size();
         for (int i = 0; i < size; i++) {
-            if (customersList.get(i).getIdCustomer().equals(input)) {
+            if (customersList.get(i).getIdCustomer().equals(idCustomer)) {
                 return i;
             }
         }
         return -1;
+    }
+
+    @Override
+    public void editCustomer(Customer customer) {
+        customersList.set(findIdCustomer(customer.getIdCustomer()), customer);
+        ReadAndWriteToFileCustomer.writeFile(customersList, CUSTOMER_PATH);
     }
 }
