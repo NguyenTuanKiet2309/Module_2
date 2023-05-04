@@ -2,7 +2,6 @@ package case_study.service;
 
 import case_study.model.Customer;
 import case_study.repository.CustomerRepository;
-import case_study.utils.ReadAndWriteToFileCustomer;
 import case_study.utils.ValidateFurama;
 
 import java.time.LocalDate;
@@ -140,26 +139,16 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void editCustomer() {
-        System.out.println("Enter the name of the customer code that needs to be edited: ");
-        String input = sc.nextLine();
-        int flag = customerRepository.findIdCustomer(input);
+        System.out.print("Enter the id of the customer code that needs to be edited: ");
+        String idCustomer = sc.nextLine();
+        int flag = customerRepository.findIdCustomer(idCustomer);
         if (flag == -1) {
             System.out.println("Customer code not found");
         } else {
-            String idEdit;
-            do {
-                System.out.println("Enter code for customer again: ");
-                idEdit = sc.nextLine();
-                if (ValidateFurama.checkIdCustomer(idEdit)) {
-                    System.out.println("Update Successful");
-                } else {
-                    System.out.println("You input invalid format(NV-XXXX).");
-                }
-            } while (!ValidateFurama.checkIdCustomer(idEdit));
-
+            String idEdit = idCustomer;
             String nameEdit;
             do {
-                System.out.println("Enter Name for Customer again: ");
+                System.out.print("Enter Name for Customer again: ");
                 nameEdit = sc.nextLine();
                 if (ValidateFurama.checkName(nameEdit)) {
                     System.out.println("Update Successful");
@@ -171,11 +160,12 @@ public class CustomerService implements ICustomerService {
             String dayOfBirthEdit;
             boolean checkAge = true;
             do {
-                System.out.println("Enter Date Of Birth for Customer again(yyyy-mm-dd): ");
+                System.out.print("Enter Date Of Birth for Customer again(yyyy-mm-dd): ");
                 dayOfBirthEdit = sc.nextLine();
                 LocalDate localDate = LocalDate.parse(dayOfBirthEdit);
                 if (ValidateFurama.checkDayOfBirth(dayOfBirthEdit)&& ValidateFurama.checkAge(localDate) >= 18) {
                     checkAge = false;
+                    System.out.println("Update Successful");
                 } else {
                     System.out.println("You input invalid format(yyyy-mm-dd)");
                 }
@@ -184,7 +174,7 @@ public class CustomerService implements ICustomerService {
             String genderEdit = "";
             boolean flag6 = true;
             do {
-                System.out.println("Please select customer gender \n" +
+                System.out.print("Please select customer gender \n" +
                         "1. Male \n" +
                         "2. Female \n" +
                         "Enter your choice: ");
@@ -202,11 +192,12 @@ public class CustomerService implements ICustomerService {
                         System.out.println("No choice - Enter your choice again!");
                         flag6 = true;
                 }
+                System.out.println("Update Successful");
             } while (flag6);
 
             String identilyCardEdit;
             do {
-                System.out.println("Enter Customer ID Card again: ");
+                System.out.print("Enter Customer ID Card again: ");
                 identilyCardEdit = sc.nextLine();
                 if (ValidateFurama.checkIdentity(identilyCardEdit)) {
                     System.out.println("Update Successful");
@@ -216,7 +207,7 @@ public class CustomerService implements ICustomerService {
             } while (!ValidateFurama.checkIdentity(identilyCardEdit));
             String phoneNumberEdit;
             do {
-                System.out.println("Enter Phone Number for Customer again: ");
+                System.out.print("Enter Phone Number for Customer again: ");
                 phoneNumberEdit = sc.nextLine();
                 if (ValidateFurama.checkPhone(phoneNumberEdit)) {
                     System.out.println("Update Successful");
@@ -225,14 +216,13 @@ public class CustomerService implements ICustomerService {
                 }
             } while (!ValidateFurama.checkPhone(phoneNumberEdit));
 
-            System.out.println("Enter Email for Customer again: ");
+            System.out.print("Enter Email for Customer again: ");
             String emailEdit = sc.nextLine();
-            System.out.println("Update Successful");
 
             String typeCustomerEdit = "";
             boolean flag7 = true;
             do {
-                System.out.println("Please select the customer type again \n" +
+                System.out.print("Please select the customer type again \n" +
                         "1. Diamond \n" +
                         "2. Platinum \n" +
                         "3. Gold \n" +
@@ -265,11 +255,12 @@ public class CustomerService implements ICustomerService {
                         System.out.println("No choice - Enter your choice again!");
                         flag7 = true;
                 }
+                System.out.println("Update Successful");
             } while (flag7);
 
             String addressEdit = "";
             try{
-                System.out.println("Enter address for Customer again:");
+                System.out.print("Enter address for Customer again:");
                 addressEdit = sc.nextLine();
             } catch (IndexOutOfBoundsException e){
                 e.getStackTrace();

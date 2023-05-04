@@ -14,6 +14,7 @@ public class ValidateFurama {
     static final String ID_VILLA_REGEX = "^(SVVL)-[0-9]{4}$";
     static final String ID_HOUSE_REGEX = "^(SVHO)-[0-9]{4}$";
     static final String ID_ROOM_REGEX = "^(SVRO)-[0-9]{4}$";
+    static final String NAME_SERVICE = "^[A-Z]{1}[a-z]+$";
 
     public static boolean checkIdEmployee(String idEmployee) {
         return Pattern.matches(ID_EMPLOYEE_REGEX, idEmployee);
@@ -57,5 +58,9 @@ public class ValidateFurama {
 
     public static boolean checkIdRoom(String idRoom) {
         return Pattern.matches(ID_ROOM_REGEX, idRoom);
+    }
+
+    public static boolean checkNameService(String name) {
+        return Pattern.matches(NAME_SERVICE, name);
     }
 }

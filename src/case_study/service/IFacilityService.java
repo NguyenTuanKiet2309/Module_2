@@ -1,4 +1,7 @@
 package case_study.service;
 
-public interface IFacilityService extends ICustomerService {
+public interface IFacilityService {
+    void displayListFacility();
+
+    void displayListFacilityMaintenance();
 }

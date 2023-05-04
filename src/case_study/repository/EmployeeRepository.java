@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeRepository implements IEmployeeRepository {
-    private static List<Employee> employeeList = new ArrayList<>();
-    private static final String EMPLOYEE_PATH = "src/case_study/data/employee.csv";
+    private List<Employee> employeeList = new ArrayList<>();
+    private final String EMPLOYEE_PATH = "src/case_study/data/employee.csv";
 
     @Override
     public List<Employee> getEmployeeList() {

@@ -1,6 +1,9 @@
 package case_study.controller;
 
 import case_study.service.FacilityService;
+import case_study.service.HouseService;
+import case_study.service.RoomService;
+import case_study.service.VIllaService;
 
 import java.util.Scanner;
 
@@ -8,6 +11,9 @@ public class FacilityController {
     Scanner sc = new Scanner(System.in);
     FuramaController furamaController = new FuramaController();
     FacilityService facilityService = new FacilityService();
+    HouseService houseService = new HouseService();
+    RoomService roomService = new RoomService();
+    VIllaService vIllaService = new VIllaService();
 
     public void displayFacility() {
         boolean flagFacility = true;
@@ -21,6 +27,7 @@ public class FacilityController {
             String choice = sc.nextLine();
             switch (choice) {
                 case "1":
+                    facilityService.displayListFacility();
                     break;
                 case "2":
                     boolean flagAdd = true;
@@ -33,10 +40,13 @@ public class FacilityController {
                         String choiceAdd = sc.nextLine();
                         switch (choiceAdd) {
                             case "1":
+                                vIllaService.addVilla();
                                 break;
                             case "2":
+                                houseService.addHouse();
                                 break;
                             case "3":
+                                roomService.addRoom();
                                 break;
                             case "4":
                                 displayFacility();
@@ -48,6 +58,7 @@ public class FacilityController {
                     } while (flagAdd);
                     break;
                 case "3":
+                    facilityService.displayListFacilityMaintenance();
                     break;
                 case "4":
                     furamaController.displayMenu();

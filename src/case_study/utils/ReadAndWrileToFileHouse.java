@@ -4,17 +4,17 @@ import case_study.model.Employee;
 import case_study.model.House;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ReadAndWrileToFileHouse {
-    public static void writeFile(List<House> houses, String path) {
+    public static void writeFile(Map<House,Integer> house, String path) {
         File file = new File(path);
         try {
             FileWriter fileWriter = new FileWriter(file,false);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for(House house : houses){
-                bufferedWriter.write(house.writeToFileHouse());
+            Set<House> houseSet = house.keySet();
+            for(House h : houseSet){
+                bufferedWriter.write(h.writeToFileHouse() + "," + house.get(h));
                 bufferedWriter.newLine();
             }
             bufferedWriter.flush();
@@ -25,8 +25,8 @@ public class ReadAndWrileToFileHouse {
         }
     }
 
-    public static List<House> readFile(String path) {
-        List<House> list = new ArrayList<>();
+    public static Map<House,Integer> readFile(String path) {
+        Map<House,Integer> houseIntegerMap = new LinkedHashMap<>();
         File file = new File(path);
         try {
             FileReader fileReader = new FileReader(file);
@@ -43,7 +43,8 @@ public class ReadAndWrileToFileHouse {
                         tempArr[5],
                         tempArr[6],
                         Integer.parseInt(tempArr[7]));
-                list.add(house);
+                int value = Integer.parseInt(tempArr[8]);
+                houseIntegerMap.put(house,value);
             }
             bufferedReader.close();
             fileReader.close();
@@ -52,6 +53,6 @@ public class ReadAndWrileToFileHouse {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return list;
+        return houseIntegerMap;
     }
 }

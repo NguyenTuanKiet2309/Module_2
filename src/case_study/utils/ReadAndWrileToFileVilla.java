@@ -1,20 +1,19 @@
 package case_study.utils;
 
-import case_study.model.Employee;
 import case_study.model.Villa;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ReadAndWrileToFileVilla {
-    public static void writeFile(List<Villa> villas, String path) {
+    public static void writeFile(Map<Villa, Integer> villas, String path) {
         File file = new File(path);
         try {
-            FileWriter fileWriter = new FileWriter(file,false);
+            FileWriter fileWriter = new FileWriter(file, false);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for(Villa v : villas){
-                bufferedWriter.write(v.writeToFileVilla());
+            Set<Villa> villaSet = villas.keySet();
+            for (Villa v : villaSet) {
+                bufferedWriter.write(v.writeToFileVilla() + "," + villas.get(v));
                 bufferedWriter.newLine();
             }
             bufferedWriter.flush();
@@ -25,8 +24,8 @@ public class ReadAndWrileToFileVilla {
         }
     }
 
-    public static List<Villa> readFile(String path) {
-        List<Villa> list = new ArrayList<>();
+    public static Map<Villa, Integer> readFile(String path) {
+        Map<Villa, Integer> villaIntegerMap = new LinkedHashMap<>();
         File file = new File(path);
         try {
             FileReader fileReader = new FileReader(file);
@@ -46,7 +45,8 @@ public class ReadAndWrileToFileVilla {
                         tempArr[6],
                         Double.parseDouble(tempArr[7]),
                         Integer.parseInt(tempArr[8]));
-                list.add(v);
+                int value = Integer.parseInt(tempArr[9]);
+                villaIntegerMap.put(v, value);
             }
             bufferedReader.close();
             fileReader.close();
@@ -55,6 +55,6 @@ public class ReadAndWrileToFileVilla {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return list;
+        return villaIntegerMap;
     }
 }

@@ -80,4 +80,5 @@ public class Booking {
                 ", typeOfService='" + typeOfService + '\'' +
                 '}';
     }
+
 }

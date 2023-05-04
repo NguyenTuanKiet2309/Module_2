@@ -178,21 +178,13 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void editEmployee() {
-        System.out.print("Enter the employee code name to be edited: ");
+        System.out.print("Enter the employee id to be edited: ");
         String idEmployee = sc.nextLine();
         int checkIdEmployee = employeeRepository.findIdEmployee(idEmployee);
         if (checkIdEmployee == -1) {
             System.out.println("Employee code not found.");
         } else {
-            String idEdit;
-            do {
-                System.out.print("Enter Code Employee: ");
-                idEdit = sc.nextLine();
-                if (!ValidateFurama.checkIdEmployee(idEdit)) {
-                    System.out.println("You input invalid format(NV-XXXX).");
-                }
-            } while (!ValidateFurama.checkIdEmployee(idEdit));
-
+            String idEdit = idEmployee;
             String nameEdit;
             do {
                 System.out.print("Enter Name Employee: ");
@@ -296,7 +288,7 @@ public class EmployeeService implements IEmployeeService {
                         "3. Expert \n" +
                         "4. Monitor \n" +
                         "5. Manage \n" +
-                        "6. Manager" +
+                        "6. Manager \n" +
                         "Enter your choice: ");
                 String choiceLocation = sc.nextLine();
                 switch (choiceLocation) {
