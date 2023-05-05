@@ -17,14 +17,16 @@ public class BookingController {
                     "2. Display list booking \n" +
                     "3. Create new contracts \n" +
                     "4. Display list contracts \n" +
-                    "5. Edit contractsn \n" +
+                    "5. Edit contracts \n" +
                     "6. Return main menu \n" +
                     "Enter your choice : ");
             String choice = sc.nextLine();
             switch (choice) {
                 case "1":
+                    bookingService.addBooking();
                     break;
                 case "2":
+                    bookingService.showBookingList();
                     break;
                 case "3":
                     break;

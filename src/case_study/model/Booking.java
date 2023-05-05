@@ -6,18 +6,18 @@ public class Booking {
     private String dateBooking;
     private String dayStart;
     private String dayEnd;
-    private String nameService;
+    private String nameCustomer;
     private String typeOfService;
 
     public Booking() {
     }
 
-    public Booking(String codeBooking, String dateBooking, String dayStart, String dayEnd, String nameService, String typeOfService) {
+    public Booking(String codeBooking, String dateBooking, String dayStart, String dayEnd, String nameCustomer, String typeOfService) {
         this.codeBooking = codeBooking;
         this.dateBooking = dateBooking;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
-        this.nameService = nameService;
+        this.nameCustomer = nameCustomer;
         this.typeOfService = typeOfService;
     }
 
@@ -53,12 +53,12 @@ public class Booking {
         this.dayEnd = dayEnd;
     }
 
-    public String getNameService() {
-        return nameService;
+    public String getNameCustomer() {
+        return nameCustomer;
     }
 
-    public void setNameService(String nameService) {
-        this.nameService = nameService;
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
     }
 
     public String getTypeOfService() {
@@ -76,7 +76,7 @@ public class Booking {
                 ", dateBooking='" + dateBooking + '\'' +
                 ", dayStart='" + dayStart + '\'' +
                 ", dayEnd='" + dayEnd + '\'' +
-                ", nameService='" + nameService + '\'' +
+                ", nameCustomer='" + nameCustomer + '\'' +
                 ", typeOfService='" + typeOfService + '\'' +
                 '}';
     }

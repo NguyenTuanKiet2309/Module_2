@@ -23,16 +23,16 @@ public class FacilityService implements IFacilityService {
     public void displayListFacility() {
         Map<Villa, Integer> villaMap = villaRepository.getVillaList();
         Set<Villa> villaSet = villaMap.keySet();
+        Map<House, Integer> houseMap = houseRepository.getHouseList();
+        Set<House> houseSet = houseMap.keySet();
+        Map<Room, Integer> roomMap = roomRepository.getRoomList();
+        Set<Room> roomSet = roomMap.keySet();
         for (Villa v : villaSet) {
             System.out.println(v + " - " + villaMap.get(v) + " used");
         }
-        Map<House, Integer> houseMap = houseRepository.getHouseList();
-        Set<House> houseSet = houseMap.keySet();
         for (House h : houseSet) {
             System.out.println(h + " - " + houseMap.get(h) + " used");
         }
-        Map<Room, Integer> roomMap = roomRepository.getRoomList();
-        Set<Room> roomSet = roomMap.keySet();
         for (Room r : roomSet) {
             System.out.println(r + " - " + roomMap.get(r) + " used");
         }

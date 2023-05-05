@@ -4,20 +4,19 @@ import case_study.model.Facility;
 import case_study.model.House;
 import case_study.model.Room;
 import case_study.model.Villa;
+import case_study.utils.ReadAndWrileToFileHouse;
+import case_study.utils.ReadAndWrileToFileRoom;
+import case_study.utils.ReadAndWrileToFileVilla;
+import org.omg.PortableInterceptor.ServerRequestInfo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
 public class FacilityRepository implements IFacilityRepository {
-    private static Map<Villa, Integer> villaMap = new LinkedHashMap<>();
-    private static Map<House, Integer> houseMap = new LinkedHashMap<>();
-    private static Map<Room, Integer> roomMap = new LinkedHashMap<>();
-
-    @Override
-    public Map<Facility, Integer> getFacilityList() {
-        return null;
-    }
+    private static Map<Villa, Integer> villaMap = ReadAndWrileToFileVilla.readFile("src/case_study/data/villa.csv");
+    private static Map<House, Integer> houseMap = ReadAndWrileToFileHouse.readFile("src/case_study/data/house.csv");
+    private static Map<Room, Integer> roomMap = ReadAndWrileToFileRoom.readFile("src/case_study/data/room.csv");
 
     @Override
     public void showMaintenanceList() {
