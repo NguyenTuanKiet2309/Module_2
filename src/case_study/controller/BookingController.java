@@ -1,12 +1,15 @@
 package case_study.controller;
 
+import case_study.model.Contract;
 import case_study.service.BookingService;
+import case_study.service.ContactService;
 
 import java.util.Scanner;
 
 public class BookingController {
     FuramaController furamaController = new FuramaController();
     BookingService bookingService = new BookingService();
+    ContactService contactService = new ContactService();
     Scanner sc = new Scanner(System.in);
 
     public void displayBooking() {
@@ -29,10 +32,13 @@ public class BookingController {
                     bookingService.showBookingList();
                     break;
                 case "3":
+                    contactService.createNewContract();
                     break;
                 case "4":
+                    contactService.showContractList();
                     break;
                 case "5":
+                    contactService.editContract();
                     break;
                 case "6":
                     furamaController.displayMenu();

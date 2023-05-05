@@ -1,23 +1,23 @@
 package case_study.model;
 
-public class Booking {
+public class Booking implements Comparable<Booking>{
 //    mã booking, ngày booking, ngày bắt đầu thuê, ngày kết thúc thuê, mã khách hàng, mã dịch vụ.
     private String codeBooking;
     private String dateBooking;
     private String dayStart;
     private String dayEnd;
-    private String nameCustomer;
+    private String idCustomer;
     private String typeOfService;
 
     public Booking() {
     }
 
-    public Booking(String codeBooking, String dateBooking, String dayStart, String dayEnd, String nameCustomer, String typeOfService) {
+    public Booking(String codeBooking, String dateBooking, String dayStart, String dayEnd, String idCustomer, String typeOfService) {
         this.codeBooking = codeBooking;
         this.dateBooking = dateBooking;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
-        this.nameCustomer = nameCustomer;
+        this.idCustomer = idCustomer;
         this.typeOfService = typeOfService;
     }
 
@@ -53,12 +53,12 @@ public class Booking {
         this.dayEnd = dayEnd;
     }
 
-    public String getNameCustomer() {
-        return nameCustomer;
+    public String getIdCustomer() {
+        return idCustomer;
     }
 
-    public void setNameCustomer(String nameCustomer) {
-        this.nameCustomer = nameCustomer;
+    public void setIdCustomer(String idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
     public String getTypeOfService() {
@@ -76,9 +76,21 @@ public class Booking {
                 ", dateBooking='" + dateBooking + '\'' +
                 ", dayStart='" + dayStart + '\'' +
                 ", dayEnd='" + dayEnd + '\'' +
-                ", nameCustomer='" + nameCustomer + '\'' +
+                ", idCustomer='" + idCustomer + '\'' +
                 ", typeOfService='" + typeOfService + '\'' +
                 '}';
     }
+    public String writeToFile() {
+        return codeBooking + "," +
+                dateBooking + "," +
+                dayStart + "," +
+                dayEnd + "," +
+                idCustomer + "," +
+                typeOfService;
+    }
 
+    @Override
+    public int compareTo(Booking o) {
+        return 1;
+    }
 }

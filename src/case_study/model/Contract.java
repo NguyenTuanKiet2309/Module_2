@@ -58,4 +58,7 @@ public class Contract {
                 ", totalPayment='" + totalPayment + '\'' +
                 '}';
     }
+    public String writeToFile() {
+        return contractNumber + "," + codeBooking + "," + advanceDeposit + "," + totalPayment;
+    }
 }
